@@ -1,3 +1,1 @@
-
-cxx
 init readme.md
