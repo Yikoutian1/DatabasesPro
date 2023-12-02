@@ -10,6 +10,7 @@
     <modules>
         <module>salary-manage</module>
         <module>salary-common</module>
+        <module>salary-security</module>
     </modules>
 
     <parent>

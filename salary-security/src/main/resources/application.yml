@@ -1,0 +1,18 @@
+## spring security配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${db.url}?serverTimezone=UTC
+    username: ${db.uname}
+    password01: ${db.pwd}
+
+  security:
+    user:
+      name: admin
+      password: 123
+
+logging:
+  level:
+    org:
+      springframework:
+        security: info
