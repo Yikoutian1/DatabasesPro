@@ -11,6 +11,9 @@
 
     <artifactId>salary-manage</artifactId>
 
+    <description>数据库管理主模块</description>
+
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
