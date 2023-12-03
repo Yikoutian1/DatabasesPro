@@ -1,10 +1,12 @@
+server:
+  port: 9001
 ## spring security配置
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${db.url}?serverTimezone=UTC
-    username: ${db.uname}
-    password01: ${db.pwd}
+    url: jdbc:mysql://localhost:3306/${db.url}?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+    username: ${db.dname}
+    password: ${db.dpwd}
 
   security:
     user:
