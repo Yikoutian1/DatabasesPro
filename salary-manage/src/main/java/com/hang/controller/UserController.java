@@ -17,7 +17,7 @@ import java.util.Objects;
 
 /**
  * @ClassName AdminController
- * @Description TODO
+ * @Description 后台登录控制层
  * @Author Calyee
  * @DATE 2023/12/01 001 22:41
  * @Version 1.0
@@ -55,10 +55,10 @@ public class UserController {
         user.setPassword("");
         // 认证成功
         session.setAttribute("info", user); // 需Session共享(不作考虑)
-        String token = Objects.equals(user.getRole(), UserStatusEnums.ADMIN_USER_ROLE) ? "admin" : "user";
-        map.put("token", token);
+        String tsuccessen = Objects.equals(user.getRole(), UserStatusEnums.ADMIN_USER_ROLE) ? "admin" : "user";
+        map.put("tsuccessen", tsuccessen);
         // 返回权限
-        return Result.ok(map);
+        return Result.success(map);
     }
 
     /**
@@ -72,7 +72,7 @@ public class UserController {
         map.put("roles", "[admin]");
         map.put("name", "admin");
         map.put("avatar", "https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
-        return Result.ok(map);
+        return Result.success(map);
     }
 
     /**
@@ -82,6 +82,6 @@ public class UserController {
      */
     @PostMapping("/logout")
     public Result logout() {
-        return Result.ok();
+        return Result.success();
     }
 }

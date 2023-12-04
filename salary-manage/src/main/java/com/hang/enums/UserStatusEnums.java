@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @ClassName UserStatusEnums
- * @Description TODO
+ * @Description 用户状态枚举
  * @Author QiuLiHang
  * @DATE 2023/12/03 003 17:21
  * @Version 1.0
