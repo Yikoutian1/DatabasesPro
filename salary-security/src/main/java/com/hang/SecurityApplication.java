@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @ClassName SalaryApplication
- * @Description TODO
+ * @Description 废弃方案
  * @Author QiuLiHang
  * @DATE 2023/11/30 030 16:13
  * @Version 1.0

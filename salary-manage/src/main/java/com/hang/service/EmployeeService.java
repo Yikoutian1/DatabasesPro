@@ -1,8 +1,10 @@
 package com.hang.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.hang.domain.po.Employee;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.hang.domain.dto.PageInfoDto;
+import com.hang.domain.po.Employee;
+import com.hang.result.Result;
 
 /**
  * (Employee)表服务接口
@@ -12,5 +14,6 @@ import com.hang.domain.po.Employee;
  */
 public interface EmployeeService extends IService<Employee> {
 
+    Result getEmployeeInfo(PageInfoDto pageInfo);
 }
 
