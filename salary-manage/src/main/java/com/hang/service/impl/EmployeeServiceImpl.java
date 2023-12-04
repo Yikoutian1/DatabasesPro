@@ -11,6 +11,8 @@ import com.hang.domain.vo.EmployeeVo;
 import com.hang.mapper.EmployeeMapper;
 import com.hang.result.Result;
 import com.hang.service.EmployeeService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,13 +39,20 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         List<Employee> records = page.getRecords();
         // 没有查询到数据
         if (records == null) {
-            return Result.build(null, 201, "分页用户列表为空");
+            return Result.build(null, 201, "用户列表为空");
         }
         return Result
                 .success(EmployeeVo.builder()
                 .records(records)
                 .total(page.getTotal())
                 .build());
+    }
+    @Autowired
+    private EmployeeMapper employeeMapper;
+    @Override
+    public Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
+        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,pageInfo.getMybatisPage());
+        return Result.success(employeeInfo);
     }
 }
 

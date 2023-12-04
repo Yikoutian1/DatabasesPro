@@ -1,10 +1,13 @@
 package com.hang.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
 import com.hang.domain.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 /**
@@ -15,6 +18,7 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface EmployeeMapper extends BaseMapper<Employee> {
-    User getByUsername(@Param("username") String username);
+
+    List<Employee> getEmployeeInfo(@Param("vo") PageInfoDto pageInfo,@Param("page")Integer l);
 }
 

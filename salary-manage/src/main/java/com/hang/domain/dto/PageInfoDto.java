@@ -34,4 +34,16 @@ public class PageInfoDto {
      */
     private String sortBy;
 
+    // ===当前项仅用于MyBatis分页参数格式化获取=== //
+    //private Integer mybatisPage;
+
+    /**
+     * 对于MyBatis原生分页转换
+     *
+     * @return for MyBatis pageNum
+     */
+    public Integer getMybatisPage() {
+        return (pageNum - 1) * pageSize;
+    }
+
 }

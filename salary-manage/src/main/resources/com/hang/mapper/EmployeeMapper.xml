@@ -3,10 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hang.mapper.EmployeeMapper">
 
-    <select id="getByUsername" resultType="com.hang.domain.po.User">
-        select id, username, password, status, role
-        from user
-        where 1 = 1
-          and id = #{username}
+
+    <select id="getEmployeeInfo" resultType="com.hang.domain.po.Employee">
+        SELECT id, name, sex, dept, salary_jb, salary_dj
+        FROM employee
+        ORDER BY #{vo.sortBy} #{vo.orderBy}
+        LIMIT #{page},#{vo.pageSize}
     </select>
 </mapper>

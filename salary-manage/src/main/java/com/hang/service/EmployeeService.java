@@ -15,5 +15,7 @@ import com.hang.result.Result;
 public interface EmployeeService extends IService<Employee> {
 
     Result getEmployeeInfo(PageInfoDto pageInfo);
+
+    Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo);
 }
 

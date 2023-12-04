@@ -32,5 +32,9 @@ public class EmployeeController {
     public Result getEmployeeInfo(PageInfoDto pageInfo) {
         return employeeService.getEmployeeInfo(pageInfo);
     }
+    @RequestMapping(value = "/useMyBatisMethodToGetEmployeeInfo", method = {RequestMethod.POST, RequestMethod.GET})
+    public Result testUseMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
+        return employeeService.useMyBatisMethodToGetEmployeeInfo(pageInfo);
+    }
 }
 
