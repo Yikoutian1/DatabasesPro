@@ -51,7 +51,8 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     private EmployeeMapper employeeMapper;
     @Override
     public Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
-        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,pageInfo.getMybatisPage());
+        Integer page = pageInfo.getMybatisPage();
+        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,page);
         return Result.success(employeeInfo);
     }
 }
