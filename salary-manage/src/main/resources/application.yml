@@ -84,5 +84,3 @@ logging:
   level:
     root: info
     org.springframework: info
-  file:
-    path: logs/

@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="feat(开发分支): 员工基础信息管理">
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/CompanyBenfitits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/Dept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/Experience.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +46,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://E:/maven/maven_repository/org/springframework/security/spring-security-config/5.7.3/spring-security-config-5.7.3-sources.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.java" root0="FORCE_HIGHLIGHTING" />
@@ -89,7 +81,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/JavaDemo/数据库/ShuJuKu/salary-manage/src/main/resources/com/hang/mapper&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -197,8 +189,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.SalaryApplication" />
         <item itemvalue="Spring Boot.SecurityApplication" />
+        <item itemvalue="Spring Boot.SalaryApplication" />
         <item itemvalue="JUnit.PasswordUtilsTest.testPassword" />
         <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
@@ -227,7 +219,6 @@
       <workItem from="1701603950645" duration="3584000" />
       <workItem from="1701686958894" duration="15012000" />
       <workItem from="1701704000156" duration="859000" />
-      <workItem from="1701774026874" duration="1536000" />
     </task>
     <task id="LOCAL-00001" summary="init readme.md">
       <created>1701325915866</created>
@@ -348,18 +339,8 @@
     <MESSAGE value="feat( ): 并没有更新什么的一次Push" />
     <MESSAGE value="feat(login): 后台登录" />
     <MESSAGE value="feat(开发分支): 员工基础信息管理" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(开发分支): 员工基础信息管理" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/EmployeeServiceImpl.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="feat(po): 实体类" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(po): 实体类" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
