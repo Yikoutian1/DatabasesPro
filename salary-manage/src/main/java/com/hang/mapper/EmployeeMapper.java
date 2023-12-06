@@ -19,6 +19,6 @@ import java.util.List;
 @Mapper
 public interface EmployeeMapper extends BaseMapper<Employee> {
 
-    List<Employee> getEmployeeInfo(@Param("vo") PageInfoDto pageInfo,@Param("page")Integer l);
+    List<Employee> getEmployeeInfo(@Param("vo") PageInfoDto pageInfo, @Param("page") Integer page);
 }
 

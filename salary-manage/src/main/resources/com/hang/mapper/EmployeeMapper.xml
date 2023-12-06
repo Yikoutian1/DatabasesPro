@@ -7,7 +7,7 @@
     <select id="getEmployeeInfo" resultType="com.hang.domain.po.Employee">
         SELECT id, name, sex, dept, salary_jb, salary_dj
         FROM employee
-        ORDER BY #{vo.sortBy} #{vo.orderBy}
+        ORDER BY ${vo.sortBy} ${vo.orderBy}
         LIMIT #{page},#{vo.pageSize}
     </select>
 </mapper>
