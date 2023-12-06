@@ -7,3 +7,17 @@ export function getEmployeeInfo(data) {
     data,
   });
 }
+
+export function getSalaryLevel() {
+  return request({
+    url: "/salaryLevel/getSalaryLevel",
+    method: "get",
+  });
+}
+
+export function getDeptList() {
+  return request({
+    url: "/dept/getDeptList",
+    method: "get",
+  });
+}

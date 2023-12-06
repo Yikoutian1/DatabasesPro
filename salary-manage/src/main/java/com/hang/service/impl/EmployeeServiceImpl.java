@@ -47,12 +47,18 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
                 .total(page.getTotal())
                 .build());
     }
+
     @Autowired
     private EmployeeMapper employeeMapper;
+
+    /**
+     * 数据库课设当然要写点SQL啦
+     * @param pageInfo 分页参数
+     * @return List
+     */
     @Override
     public Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
-        Integer page = pageInfo.getMybatisPage();
-        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,page);
+        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,pageInfo.getMybatisPage());
         return Result.success(employeeInfo);
     }
 }

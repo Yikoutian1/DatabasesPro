@@ -22,8 +22,8 @@ public class SalaryLevel implements Serializable{
     //工资级别
     private String salGrade;
 
-    //工资金额
-    private Double salAmount;
+    //工资金额 范围
+    private String salAmount;
 
 
 

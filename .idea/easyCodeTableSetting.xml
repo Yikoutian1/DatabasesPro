@@ -64,8 +64,8 @@
               <option name="name" value="Dept" />
               <option name="preName" value="" />
               <option name="saveModelName" value="salary-manage" />
-              <option name="savePackageName" value="com.hang.domain" />
-              <option name="savePath" value="./salary-manage/src/main/java/com/hang/domain" />
+              <option name="savePackageName" value="com.hang" />
+              <option name="savePath" value="./salary-manage/src/main/java/com/hang" />
               <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>
           </value>
@@ -245,8 +245,8 @@
               <option name="name" value="SalaryLevel" />
               <option name="preName" value="" />
               <option name="saveModelName" value="salary-manage" />
-              <option name="savePackageName" value="com.hang.domain" />
-              <option name="savePath" value="./salary-manage/src/main/java/com/hang/domain" />
+              <option name="savePackageName" value="com.hang" />
+              <option name="savePath" value="./salary-manage/src/main/java/com/hang" />
               <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>
           </value>
