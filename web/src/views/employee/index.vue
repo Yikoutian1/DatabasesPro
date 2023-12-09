@@ -210,7 +210,7 @@ export default {
   mounted() {
     const _this = this;
     _this.getEmployeePageInfo();
-    _this.initOptions()
+    _this.initOptions();
   },
 };
 </script>

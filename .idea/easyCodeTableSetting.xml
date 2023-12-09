@@ -33,6 +33,36 @@
             </TableInfoDTO>
           </value>
         </entry>
+        <entry key="database_lessons.contract">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="工资等级" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="level" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="工资级别" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="rank" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="Contract" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="salary-manage" />
+              <option name="savePackageName" value="com.hang" />
+              <option name="savePath" value="./salary-manage/src/main/java/com/hang" />
+              <option name="templateGroupName" value="MybatisPlus" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="database_lessons.dept">
           <value>
             <TableInfoDTO>
@@ -238,15 +268,22 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="salAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="工资级别对照工作名" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="salJobName" />
+                    <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="SalaryLevel" />
               <option name="preName" value="" />
               <option name="saveModelName" value="salary-manage" />
-              <option name="savePackageName" value="com.hang" />
-              <option name="savePath" value="./salary-manage/src/main/java/com/hang" />
+              <option name="savePackageName" value="com.hang.domain" />
+              <option name="savePath" value="./salary-manage/src/main/java/com/hang/domain" />
               <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>
           </value>
