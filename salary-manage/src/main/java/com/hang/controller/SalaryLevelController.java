@@ -22,6 +22,11 @@ public class SalaryLevelController {
 
     private final SalaryLevelMapper salaryLevelMapper;
 
+
+    /**
+     * TODO 此处需要修改
+     * @return 工资等级和级别对照表
+     */
     @GetMapping("/getSalaryLevel")
     public Result getSalaryLevel() {
         return Result.success(salaryLevelMapper.getSalaryLevel());

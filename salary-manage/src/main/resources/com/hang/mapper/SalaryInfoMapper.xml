@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hang.mapper.SalaryInfoMapper">
+
+
+    <select id="getSalaryInfo" resultType="com.hang.domain.po.SalaryInfo">
+        SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits
+        FROM sal_info
+    </select>
+</mapper>

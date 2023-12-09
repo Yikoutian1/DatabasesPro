@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * (SalaryLevel)表实体类
  *
  * @author Calyee
- * @since 2023-12-05 19:27:45
+ * @since 2023-12-09 22:44:53
  */
 @SuppressWarnings("serial")
 @Data
@@ -19,11 +19,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @NoArgsConstructor
 @TableName("salary_level")
 public class SalaryLevel implements Serializable{
+
     //工资级别
     private String salGrade;
-
-    //工资金额 范围
+    //工资金额
     private String salAmount;
+    //工资级别对照工作名
+    private String salJobName;
 
 
 

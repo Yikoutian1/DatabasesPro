@@ -27,10 +27,10 @@ public class DeptController {
 
     @GetMapping("/getDeptList")
     public Result getDeptList() {
-        // TODO 前端渲染部门列表和工作等级
-        List<DeptSelectVo> deptSelectVos = BeanCopyUtils
-                .copyBeanList(deptMapper.getDeptLevel(), DeptSelectVo.class);
-        return Result.success(deptSelectVos);
+        /**
+         * 获取例如董事长类职称
+         */
+        return Result.success();
     }
 }
 
