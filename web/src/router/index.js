@@ -54,6 +54,19 @@ export const constantRoutes = [
       meta: { title: '首页', icon: 'dashboard' }
     }]
   },
+  // 员工信息
+  {
+    path: '/employee',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Employee',
+        component: () => import('@/views/employee/index'),
+        meta: { title: '员工管理', icon: 'form' }
+      }
+    ]
+  },
 
   {
     path: '/form',

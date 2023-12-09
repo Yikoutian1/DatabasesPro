@@ -3,4 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hang.mapper.UserMapper">
 
+    <select id="getByUsername" resultType="com.hang.domain.po.User">
+        select id, username, password, status, role
+        from user
+        where id = #{username}
+    </select>
 </mapper>

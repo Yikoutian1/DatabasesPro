@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * @ClassName SalaryApplication
- * @Description TODO
+ * @Description 主启动类
  * @Author QiuLiHang
  * @DATE 2023/11/30 030 16:13
  * @Version 1.0
