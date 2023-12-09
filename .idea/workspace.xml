@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="feat(工资等级,级别): 工资等级,级别">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" afterDir="false" />
+    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/SalaryInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/DeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryLevelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryLevelMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/views/employee/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/employee/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +49,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://E:/maven/maven_repository/org/springframework/security/spring-security-config/5.7.3/spring-security-config-5.7.3-sources.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -72,6 +66,7 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectId" id="2YsrOBaKJFgEnmTSznWn1t8cip1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -194,8 +189,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.SalaryApplication" />
         <item itemvalue="Spring Boot.SecurityApplication" />
+        <item itemvalue="Spring Boot.SalaryApplication" />
         <item itemvalue="JUnit.PasswordUtilsTest.testPassword" />
         <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
@@ -224,9 +219,6 @@
       <workItem from="1701603950645" duration="3584000" />
       <workItem from="1701686958894" duration="15012000" />
       <workItem from="1701704000156" duration="859000" />
-      <workItem from="1701876869196" duration="85000" />
-      <workItem from="1701945745825" duration="1568000" />
-      <workItem from="1702131179829" duration="1614000" />
     </task>
     <task id="LOCAL-00001" summary="init readme.md">
       <created>1701325915866</created>
@@ -319,14 +311,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701704019002</updated>
     </task>
-    <task id="LOCAL-00014" summary="feat(工资等级,级别): 工资等级,级别">
-      <created>1701876903312</created>
+    <task id="LOCAL-00014" summary="feat(po): 实体类">
+      <created>1702114514822</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1701876903313</updated>
+      <updated>1702114514822</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat(po): 实体类">
+      <created>1702114741701</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1702114741701</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,8 +354,7 @@
     <MESSAGE value="feat(login): 后台登录" />
     <MESSAGE value="feat(开发分支): 员工基础信息管理" />
     <MESSAGE value="feat(po): 实体类" />
-    <MESSAGE value="feat(工资等级,级别): 工资等级,级别" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(工资等级,级别): 工资等级,级别" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(po): 实体类" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
