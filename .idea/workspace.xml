@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="feat(po): 实体类">
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/DeptController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryLevelController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/vo/DeptSelectVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/DeptMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryLevelMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/utils/BeanCopyUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/DeptMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/SalaryLevelMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/domain/po/SalaryLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/EmployeeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/EmployeeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/EmployeeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/EmployeeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/api/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/api/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/views/employee/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/employee/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab7058a9-aeb9-4c90-905d-1a24003575c3.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +46,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://E:/maven/maven_repository/org/springframework/security/spring-security-config/5.7.3/spring-security-config-5.7.3-sources.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -82,41 +63,42 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectId" id="2YsrOBaKJFgEnmTSznWn1t8cip1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "dev",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/JavaDemo/数据库/ShuJuKu/salary-manage/src/main/resources/com/hang/mapper",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "spring.configuration.checksum": "f76f8a4055033fb7839d76eba0c84899",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaDemo/数据库/ShuJuKu/salary-manage/src/main/resources/com/hang/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f76f8a4055033fb7839d76eba0c84899&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\resources\com\hang\mapper" />
