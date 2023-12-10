@@ -1,8 +1,7 @@
 package com.hang.controller;
 
-import com.hang.domain.dto.PageInfoDto;
+
 import com.hang.result.Result;
-import com.hang.service.EmployeeService;
 import com.hang.service.SalaryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,4 +20,5 @@ public class SalaryInfoController {
     public Result getSalaryInfo() {
         return salaryInfoService.getSalaryInfo();
     }
+
 }
