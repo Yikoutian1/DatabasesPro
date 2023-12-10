@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="feat(工资等级,级别): 数据库表结构修改, domain/po修改">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://E:/maven/maven_repository/org/springframework/security/spring-security-config/5.7.3/spring-security-config-5.7.3-sources.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\maven_repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../Software/Maven/apache-maven-3.6.3" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\Software\Maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="2YsrOBaKJFgEnmTSznWn1t8cip1" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaDemo/数据库/ShuJuKu/salary-manage/src/main/resources/com/hang/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f76f8a4055033fb7839d76eba0c84899&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\resources\com\hang\mapper" />
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-security\src\main\resources" />
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\java\com\hang" />
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\resources" />
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\resources\com" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaDemo\数据库\ShuJuKu\salary-manage\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hang.utils" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hang" />
+      <recent name="com.hang.domain.po" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SalaryApplication">
+    <configuration name="PasswordUtilsTest.testPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="salary-manage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hang.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hang.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.hang.utils.PasswordUtilsTest" />
+      <option name="METHOD_NAME" value="testPassword" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalaryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="salary-manage" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hang.SalaryApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hang.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="salary-security" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hang.SecurityApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hang.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SecurityApplication" />
+        <item itemvalue="Spring Boot.SalaryApplication" />
+        <item itemvalue="JUnit.PasswordUtilsTest.testPassword" />
+        <item itemvalue="Spring Boot.SalaryApplication" />
+        <item itemvalue="Spring Boot.SecurityApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="" />
+      <created>1701325095763</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701325095763</updated>
+      <workItem from="1701325096774" duration="1002000" />
+      <workItem from="1701327099298" duration="4337000" />
+      <workItem from="1701335576779" duration="471000" />
+      <workItem from="1701340625824" duration="653000" />
+      <workItem from="1701440036181" duration="2132000" />
+      <workItem from="1701442183493" duration="171000" />
+      <workItem from="1701497112133" duration="154000" />
+      <workItem from="1701497687221" duration="64000" />
+      <workItem from="1701522880165" duration="1042000" />
+      <workItem from="1701563924906" duration="87000" />
+      <workItem from="1701590286420" duration="10810000" />
+      <workItem from="1701603950645" duration="3584000" />
+      <workItem from="1701686958894" duration="15012000" />
+      <workItem from="1701704000156" duration="859000" />
+      <workItem from="1701876869196" duration="85000" />
+      <workItem from="1701945745825" duration="1568000" />
+      <workItem from="1702131179829" duration="1614000" />
+      <workItem from="1702206115812" duration="128000" />
+    </task>
+    <task id="LOCAL-00001" summary="init readme.md">
+      <created>1701325915866</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701325915866</updated>
+    </task>
+    <task id="LOCAL-00002" summary="构建项目整体结构">
+      <created>1701332349770</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701332349770</updated>
+    </task>
+    <task id="LOCAL-00003" summary="前端工程版本修改">
+      <created>1701335496420</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701335496420</updated>
+    </task>
+    <task id="LOCAL-00004" summary="前端工程版本修改">
+      <created>1701335596728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701335596728</updated>
+    </task>
+    <task id="LOCAL-00005" summary="数据库结构示例">
+      <created>1701440499404</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701440499404</updated>
+    </task>
+    <task id="LOCAL-00006" summary="数据库结构示例">
+      <created>1701441029321</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701441029321</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat(login): 登录初始化,添加结果集">
+      <created>1701442288538</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701442288538</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat(struct): 项目结构">
+      <created>1701497738092</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701497738092</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat(security): 安全框架加入(未投入使用)">
+      <created>1701523901310</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701523901310</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat( ): 并没有更新什么的一次Push">
+      <created>1701607303619</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701607303619</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat(login): 后台登录">
+      <created>1701693062671</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701693062671</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat(开发分支): 员工基础信息管理">
+      <created>1701698279543</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701698279543</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(开发分支): 员工基础信息管理">
+      <created>1701704019002</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701704019002</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat(工资等级,级别): 工资等级,级别">
+      <created>1701876903312</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701876903313</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init readme.md" />
+    <MESSAGE value="构建项目整体结构" />
+    <MESSAGE value="前端工程版本修改" />
+    <MESSAGE value="数据库结构示例" />
+    <MESSAGE value="feat(login): 登录初始化,添加结果集" />
+    <MESSAGE value="feat(struct): 项目结构" />
+    <MESSAGE value="feat(security): 安全框架加入(未投入使用)" />
+    <MESSAGE value="feat( ): 并没有更新什么的一次Push" />
+    <MESSAGE value="feat(login): 后台登录" />
+    <MESSAGE value="feat(开发分支): 员工基础信息管理" />
+    <MESSAGE value="feat(po): 实体类" />
+    <MESSAGE value="feat(工资等级,级别): 工资等级,级别" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(工资等级,级别): 工资等级,级别" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
