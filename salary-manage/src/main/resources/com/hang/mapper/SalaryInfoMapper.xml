@@ -5,7 +5,7 @@
 
 
     <select id="getSalaryInfo" resultType="com.hang.domain.po.SalaryInfo">
-        SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits
-        FROM sal_info
+        SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits,net_salary
+        FROM salary_info
     </select>
 </mapper>
