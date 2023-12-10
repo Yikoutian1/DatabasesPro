@@ -67,7 +67,19 @@ export const constantRoutes = [
       }
     ]
   },
-
+  // 薪资信息
+  {
+    path: '/salaryInfo',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'salaryInfo',
+        component: () => import('@/views/salaryInfo/index'),
+        meta: { title: '薪资信息', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
@@ -164,7 +176,7 @@ const createRouter = () => new Router({
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter() {
+export function resetRouter () {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
