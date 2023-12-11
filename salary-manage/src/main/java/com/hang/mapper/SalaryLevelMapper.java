@@ -16,6 +16,9 @@ import java.util.List;
 @Mapper
 public interface SalaryLevelMapper extends BaseMapper<SalaryLevel> {
 
-    List<String> getSalaryLevel();
+
+    List<SalaryLevel> getSalaryContract();
+
+    List<String> getSalaryOnlyLevel();
 }
 

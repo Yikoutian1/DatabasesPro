@@ -8,16 +8,24 @@ export function getEmployeeInfo(data) {
   });
 }
 
-export function getSalaryLevel() {
+export function getDeptNameList() {
   return request({
-    url: "/salaryLevel/getSalaryLevel",
+    url: "/dept/getDeptNameList",
     method: "get",
   });
 }
 
-export function getDeptList() {
+export function getSalaryOnlyLevel() {
   return request({
-    url: "/dept/getDeptList",
+    url: "/salaryLevel/getSalaryOnlyLevel",
     method: "get",
+  });
+}
+
+export function getSalaryLevel(data) {
+  return request({
+    url: "/salaryLevel/getSalaryLevel",
+    method: "get",
+    name: data
   });
 }
