@@ -3,12 +3,15 @@ package com.hang.controller;
 
 import com.hang.domain.po.SalaryLevel;
 import com.hang.domain.vo.SalarySelectVo;
+import com.hang.enums.ResultCodeEnum;
 import com.hang.mapper.SalaryLevelMapper;
 import com.hang.result.Result;
 import com.hang.service.SalaryLevelService;
 import com.hang.utils.BeanCopyUtils;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,22 +36,26 @@ public class SalaryLevelController {
 
 
     /**
-     * TODO 工资等级和级别对照表
+     * 工资等级和级别对照表
      *
      * @return List<SalarySelectVo>
      */
     @GetMapping("/getSalaryLevel")
     public Result getSalaryLevel(String name) {
-        Map<String,Object> salaryContract  = salaryLevelService.getSalaryContract(name);
-        return Result.success(salaryContract);
+        if (!StringUtils.hasText(name)) {
+            return Result.build("", ResultCodeEnum.INFO_EMPTY);
+        }
+        return salaryLevelService.getSalaryContract(name);
     }
+
     /**
      * 仅仅获取不重复的部门名
-     * @return
+     *
+     * @return Salary list
      */
     @GetMapping("/getSalaryOnlyLevel")
     public Result getSalaryOnlyLevel() {
-        List<String> salaryContract  = salaryLevelService.getSalaryOnlyLevel();
+        List<String> salaryContract = salaryLevelService.getSalaryOnlyLevel();
         return Result.success(salaryContract);
     }
 }

@@ -8,6 +8,7 @@ import com.hang.result.Result;
 import com.hang.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -41,16 +42,44 @@ public class EmployeeController {
     }
 
     /**
+     * 新增用户
+     * TODO 前端新增用户
+     *
+     * @param employeeDto Form
+     * @return 200
+     */
+    @PostMapping("/saveEmployeeInfo")
+    public Result saveEmployeeInfo(@RequestBody EmployeeDto employeeDto) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDto, employee);
+        employee.setId(null); // 置id为空
+        employeeService.save(employee);
+        return Result.success();
+    }
+
+    /**
      * 更新
      *
      * @param employeeDto Form
      * @return Result
      */
     @PutMapping
-    public Result saveEmployeeInfo(EmployeeDto employeeDto) {
+    public Result updateEmployeeInfo(@RequestBody EmployeeDto employeeDto) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
-        employeeService.save(employee);
+        employeeService.updateById(employee);
+        return Result.success();
+    }
+
+    /**
+     * 根据id删除用户
+     *
+     * @param id 用户id
+     * @return success 200
+     */
+    @DeleteMapping("/{id}")
+    public Result delEmployee(@PathVariable("id") Integer id) {
+        employeeService.removeById(id);
         return Result.success();
     }
 }

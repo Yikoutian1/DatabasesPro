@@ -3,7 +3,9 @@ package com.hang.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hang.domain.po.SalaryLevel;
 import com.hang.domain.vo.SalarySelectVo;
+import com.hang.enums.ResultCodeEnum;
 import com.hang.mapper.SalaryLevelMapper;
+import com.hang.result.Result;
 import com.hang.service.SalaryLevelService;
 import com.hang.utils.BeanCopyUtils;
 import lombok.RequiredArgsConstructor;
@@ -29,19 +31,18 @@ public class SalaryLevelServiceImpl extends ServiceImpl<SalaryLevelMapper, Salar
     private final SalaryLevelMapper salaryLevelMapper;
 
     @Override
-    public Map<String, Object> getSalaryContract(String name) {
-        Map<String, Object> res = new HashMap<>();
-        // 如果没有则判空
-        if (!StringUtils.hasText(name) || name == null) {
-            return res;
-        }
+    public Result getSalaryContract(String name) {
         List<SalaryLevel> salaryContract = salaryLevelMapper.getSalaryContract();
+        String res = "";
         for (SalaryLevel level : salaryContract) {
             if (level.getSalJobName().contains(name)) {
-                res.put(name, level.getSalGrade());
+                res = level.getSalGrade();
             }
         }
-        return res;
+        if (res.isEmpty()) {
+            return Result.build("", ResultCodeEnum.INFO_EMPTY);
+        }
+        return Result.success(res);
     }
 
     @Override

@@ -22,6 +22,7 @@ public enum ResultCodeEnum {
     PASSWORD_ERROR(215, "密码不正确"),
     LOGIN_MOBLE_ERROR( 216, "账号不正确"),
     ACCOUNT_STOP( 217, "账号已停用"),
+    INFO_EMPTY( 200, "数据为空"),
     ;
 
     private Integer code;

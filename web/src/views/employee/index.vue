@@ -45,7 +45,9 @@
             size="small"
             >编辑</el-button
           >
-          <el-button type="danger" size="small">删除</el-button>
+          <el-button size="small" type="danger" @click="del(scope.row.id)"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -121,6 +123,9 @@ import { getEmployeeInfo } from "@/api/employee";
 import { getDeptNameList } from "@/api/employee";
 import { getSalaryOnlyLevel } from "@/api/employee";
 import { getSalaryLevel } from "@/api/employee";
+import { updateEmployeeInfo } from "@/api/employee";
+import { saveEmployeeInfo } from "@/api/employee";
+import { delEmployee } from "@/api/employee";
 
 export default {
   name: "employee",
@@ -143,8 +148,41 @@ export default {
     };
   },
   methods: {
+    
+    del(id) {
+      this.$confirm("确定要删除吗？", "删除操作", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        closeOnClickModal: false,
+        type: "warning",
+        center: true,
+      }).then(async () => {
+        await delEmployee(id).then((res) => {
+          if (res.code === 200) {
+            this.$message({
+              message: "删除成功",
+              type: "success",
+            });
+          } else {
+            this.$message.error("删除失败");
+          }
+        });
+      });
+    },
     confirmUpdate() {
-      console.info(this.choiseRow);
+      // console.info(this.choiseRow);
+      const _this = this;
+      updateEmployeeInfo(_this.choiseRow).then((res) => {
+        if (res.code === 200) {
+          this.$message({
+            message: "更新成功",
+            type: "success",
+          });
+        } else {
+          this.$message.error("更新失败");
+        }
+        _this.showEmpInfoDialogTableVisible = false;
+      });
     },
     concelUpdate() {
       const _this = this;
@@ -162,6 +200,7 @@ export default {
       _this.choiseRow.salaryDj = _this.oldChoiseRow.salaryDj;
       _this.choiseRow.salaryJb = _this.oldChoiseRow.salaryJb;
       _this.choiseRow.sex = _this.oldChoiseRow.sex;
+      // console.info("old:" + _this.choiseRow);
     },
     /**
      * 初始化选项
@@ -255,6 +294,8 @@ export default {
     "choiseRow.salaryJb"() {
       getSalaryLevel(this.choiseRow.salaryJb).then((res) => {
         if (res.code === 200) {
+          if (res.message == "数据为空") return;
+          // console.info(res.data);
           this.choiseRow.salaryDj = res.data;
         }
       });

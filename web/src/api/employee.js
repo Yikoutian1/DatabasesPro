@@ -26,6 +26,29 @@ export function getSalaryLevel(data) {
   return request({
     url: "/salaryLevel/getSalaryLevel",
     method: "get",
-    name: data
+    params: { name: data },
+  });
+}
+
+export function updateEmployeeInfo(data) {
+  return request({
+    url: "/employee",
+    method: "put",
+    data,
+  });
+}
+
+export function delEmployee(id) {
+  return request({
+    url: "/employee",
+    method: "delete",
+    params: { id: id },
+  });
+}
+export function saveEmployeeInfo(data) {
+  return request({
+    url: "/employee/saveEmployeeInfo",
+    method: "post",
+    data,
   });
 }
