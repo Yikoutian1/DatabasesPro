@@ -1,7 +1,9 @@
 package com.hang.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
 import com.hang.domain.po.SalaryInfo;
 import com.hang.domain.vo.EmployeeVo;
@@ -31,12 +33,9 @@ public class SalaryInfoServiceImpl extends ServiceImpl<SalaryInfoMapper, SalaryI
         }
         return Result
                 .success(SalaryInfoVo.builder()
-                .records(records)
-                .build());
+                        .records(records)
+                        .build());
     }
 
-//    List<SalaryInfo> getSalaryInfo() {
-//        return salaryInfoMapper.getSalaryInfo();
-//    }
 
 }

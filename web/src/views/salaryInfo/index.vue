@@ -8,14 +8,29 @@
       <el-table-column prop="empName" label="员工姓名" width="120">
       </el-table-column>
       <el-table-column prop="baseSalary" label="员工基础工资" width="120">
+        <template slot-scope="scope">
+          ￥{{ scope.row.baseSalary }}
+        </template>
       </el-table-column>
       <el-table-column prop="jobSalary" label="员工岗位工资" width="120">
+        <template slot-scope="scope">
+          ￥{{ scope.row.jobSalary }}
+        </template>
       </el-table-column>
       <el-table-column prop="expSalary" label="员工工龄工资" width="200">
+        <template slot-scope="scope">
+          ￥{{ scope.row.expSalary }}
+        </template>
       </el-table-column>
       <el-table-column prop="companyBenefits" label="公司福利" width="120">
+        <template slot-scope="scope">
+          ￥{{ scope.row.companyBenefits }}
+        </template>
       </el-table-column>
       <el-table-column prop="netSalary" label="员工实得工资" width="120">
+        <template slot-scope="scope">
+          ￥{{ scope.row.netSalary }}
+        </template>
       </el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
@@ -24,6 +39,8 @@
         </template>
       </el-table-column>
     </el-table>
+
+
 
   </div>
 </template>
@@ -37,9 +54,11 @@ export default {
   data () {
     return {
       page: {
+
         sortBy: "id", // 默认排序字段id
         orderBy: "ASC", // 默认以ASC排序
       },
+
       choiseRow: [], // 选择的行信息
       salaryInfoList: [],
     };
@@ -52,7 +71,22 @@ export default {
       const _this = this;
     },
 
+    /**
+     * 修改分页大小
+     */
+    handleSizeChange (newSize) {
+      const _this = this;
 
+      _this.getSalaryInfo();
+    },
+    /**
+     * 修改当前页码
+     */
+    handleCurrentChange (newPageNum) {
+      const _this = this;
+
+      _this.getSalaryInfo();
+    },
     /**
      * 统一请求处理
      */
