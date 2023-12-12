@@ -10,4 +10,14 @@
         ORDER BY ${vo.sortBy} ${vo.orderBy}
         LIMIT #{page},#{vo.pageSize}
     </select>
+    <update id="saveEmployeeInfo">
+        UPDATE employee
+        SET name      = #{dto.name},
+            sex       = #{dto.sex},
+            dept      = #{dto.dept},
+            salary_jb = #{dto.salary_jb},
+            salary_dj = #{dto.salary_dj}
+        where id = #{dto.id}
+
+    </update>
 </mapper>

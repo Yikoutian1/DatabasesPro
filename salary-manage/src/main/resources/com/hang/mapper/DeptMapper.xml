@@ -4,8 +4,8 @@
 <mapper namespace="com.hang.mapper.DeptMapper">
 
 
-    <select id="getDeptLevel" resultType="java.lang.String">
-        select distinct job_title
+    <select id="getDeptName" resultType="java.lang.String">
+        select distinct dept_name
         from dept
     </select>
 </mapper>

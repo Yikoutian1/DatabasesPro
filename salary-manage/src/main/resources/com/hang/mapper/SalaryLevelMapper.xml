@@ -4,8 +4,12 @@
 <mapper namespace="com.hang.mapper.SalaryLevelMapper">
 
 
-    <select id="getSalaryLevel" resultType="java.lang.String">
-        select distinct sal_grade
+    <select id="getSalaryContract" resultType="com.hang.domain.po.SalaryLevel">
+        select sal_amount, sal_grade, sal_job_name
+        from salary_level
+    </select>
+    <select id="getSalaryOnlyLevel" resultType="java.lang.String">
+        select sal_job_name
         from salary_level
     </select>
 </mapper>

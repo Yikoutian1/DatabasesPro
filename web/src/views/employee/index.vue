@@ -39,10 +39,13 @@
       ></el-table-column>
       <el-table-column label="操作" width="300">
         <template slot-scope="scope">
-          <el-button @click="handleShowInfo(scope.row)" type="text" size="small"
-            >查看</el-button
+          <el-button
+            @click="handleShowInfo(scope.row)"
+            type="primary"
+            size="small"
+            >编辑</el-button
           >
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -105,10 +108,8 @@
           {{ choiseRow.salaryDj }}
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')"
-            >立即创建</el-button
-          >
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
+          <el-button type="primary" @click="confirmUpdate()">保存</el-button>
+          <el-button @click="concelUpdate()">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -117,14 +118,15 @@
 
 <script>
 import { getEmployeeInfo } from "@/api/employee";
+import { getDeptNameList } from "@/api/employee";
+import { getSalaryOnlyLevel } from "@/api/employee";
 import { getSalaryLevel } from "@/api/employee";
-import { getDeptList } from "@/api/employee";
 
 export default {
   name: "employee",
   data() {
     return {
-      showEmpInfoDialogTableVisible: true, // 控制显示员工页的弹窗按钮
+      showEmpInfoDialogTableVisible: false, // 控制显示员工页的弹窗按钮
       page: {
         pageSize: 20, // 默认一页20个
         currentPage: 1, // 默认第一页
@@ -133,41 +135,66 @@ export default {
         orderBy: "ASC", // 默认以ASC排序
       },
       choiseRow: [], // 选择的行信息
+      oldChoiseRow: [], // 旧表单
       employeeList: [],
       loading: true, // 加载动画
-      deptOptions: [], // 所在部门选择列表
       salaryJbOptions: [], // 工资级别选择列表
+      deptOptions: [], // 部门名
     };
   },
   methods: {
+    confirmUpdate() {
+      console.info(this.choiseRow);
+    },
+    concelUpdate() {
+      const _this = this;
+      _this.oldChoiseData();
+      _this.showEmpInfoDialogTableVisible = false;
+    },
+    /**
+     * 原表单数据
+     */
+    oldChoiseData() {
+      const _this = this;
+      _this.choiseRow.dept = _this.oldChoiseRow.dept;
+      _this.choiseRow.id = _this.oldChoiseRow.id;
+      _this.choiseRow.name = _this.oldChoiseRow.name;
+      _this.choiseRow.salaryDj = _this.oldChoiseRow.salaryDj;
+      _this.choiseRow.salaryJb = _this.oldChoiseRow.salaryJb;
+      _this.choiseRow.sex = _this.oldChoiseRow.sex;
+    },
     /**
      * 初始化选项
      */
     initOptions() {
       const _this = this;
-      // 工资等级
-      getSalaryLevel().then((res) => {
+      // 获取工资对照表
+      getSalaryOnlyLevel().then((res) => {
         let jsonModel = res.data;
         if (res.code === 200) {
           _this.salaryJbOptions = jsonModel;
         }
       });
-      // 部门列表
-      getDeptList().then((res) => {
-        let jsonModel = res.data;
-        if (res.code === 200) {
-          _this.deptOptions = jsonModel;
-        }
-      });
     },
     /**
-     * 处理修改员工信息保存
+     * TODO 处理修改员工信息保存
      */
     handleShowInfo(row) {
       const _this = this;
       _this.showEmpInfoDialogTableVisible = true;
+      _this.saveOldChoiseRowInfo(row);
       _this.choiseRow = row;
-      console.info(_this.choiseRow);
+      // console.info(_this.choiseRow);
+    },
+    // 旧表单
+    saveOldChoiseRowInfo(row) {
+      const _this = this;
+      _this.oldChoiseRow.dept = row.dept;
+      _this.oldChoiseRow.id = row.id;
+      _this.oldChoiseRow.name = row.name;
+      _this.oldChoiseRow.salaryDj = row.salaryDj;
+      _this.oldChoiseRow.salaryJb = row.salaryJb;
+      _this.oldChoiseRow.sex = row.sex;
     },
     /**
      * 修改分页大小
@@ -196,11 +223,22 @@ export default {
       param.append("orderBy", _this.page.orderBy);
       param.append("sortBy", _this.page.sortBy);
       getEmployeeInfo(param).then((res) => {
-        const jsonModel = res.data;
+        let jsonModel = res.data;
         if (res.code === 200) {
-          _this.page.total = jsonModel.total;
+          _this.page.total = parseInt(jsonModel.total);
           _this.employeeList = jsonModel.records;
           _this.loading = false;
+        } else {
+          this.$message.error("服务器打瞌睡了");
+        }
+      });
+    },
+    getDeptNames() {
+      const _this = this;
+      getDeptNameList().then((res) => {
+        let jsonModel = res.data;
+        if (res.code === 200) {
+          _this.deptOptions = jsonModel;
         } else {
           this.$message.error("服务器打瞌睡了");
         }
@@ -211,6 +249,16 @@ export default {
     const _this = this;
     _this.getEmployeePageInfo();
     _this.initOptions();
+    _this.getDeptNames();
+  },
+  watch: {
+    "choiseRow.salaryJb"() {
+      getSalaryLevel(this.choiseRow.salaryJb).then((res) => {
+        if (res.code === 200) {
+          this.choiseRow.salaryDj = res.data;
+        }
+      });
+    },
   },
 };
 </script>
