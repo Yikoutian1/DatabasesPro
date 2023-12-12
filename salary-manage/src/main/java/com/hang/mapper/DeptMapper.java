@@ -16,6 +16,6 @@ import java.util.List;
 @Mapper
 public interface DeptMapper extends BaseMapper<Dept> {
 
-    List<String> getDeptLevel();
+    List<String> getDeptName();
 }
 

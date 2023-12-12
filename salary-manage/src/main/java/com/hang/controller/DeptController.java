@@ -1,15 +1,13 @@
 package com.hang.controller;
 
 
-import com.hang.domain.vo.DeptSelectVo;
 import com.hang.mapper.DeptMapper;
 import com.hang.result.Result;
-import com.hang.utils.BeanCopyUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * (Dept)表控制层
@@ -25,12 +23,12 @@ public class DeptController {
 
     private final DeptMapper deptMapper;
 
-    @GetMapping("/getDeptList")
-    public Result getDeptList() {
+    @GetMapping("/getDeptNameList")
+    public Result getDeptNameList() {
         /**
-         * 获取例如董事长类职称
+         * 获取部门名称
          */
-        return Result.success();
+        return Result.success(deptMapper.getDeptName());
     }
 }
 
