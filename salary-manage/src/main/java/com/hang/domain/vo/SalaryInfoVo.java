@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class SalaryInfoVo {
+    /**
+     * 总数
+     */
+    private Long total;
 
     /**
      * 记录

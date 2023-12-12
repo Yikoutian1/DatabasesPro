@@ -1,8 +1,10 @@
 package com.hang.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.SalaryInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,5 +17,4 @@ import java.util.List;
 public interface SalaryInfoMapper extends BaseMapper<SalaryInfo> {
 
     List<SalaryInfo> getSalaryInfo();
-
 }
