@@ -8,6 +8,17 @@ export function getEmployeeInfo(data) {
   });
 }
 
+export function getEmployeeByM(data, name) {
+  return request({
+    url: "/employee/getEmployeeByM",
+    method: "post",
+    data: data,
+    params: {
+      name: name,
+    },
+  });
+}
+
 export function getDeptNameList() {
   return request({
     url: "/dept/getDeptNameList",
@@ -45,10 +56,11 @@ export function delEmployee(id) {
     params: { id: id },
   });
 }
+
 export function saveEmployeeInfo(data) {
   return request({
     url: "/employee/saveEmployeeInfo",
     method: "post",
-    data,
+    data
   });
 }

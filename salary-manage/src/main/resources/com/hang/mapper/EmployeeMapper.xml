@@ -7,9 +7,15 @@
     <select id="getEmployeeInfo" resultType="com.hang.domain.po.Employee">
         SELECT id, name, sex, dept, salary_jb, salary_dj
         FROM employee
+        <where>
+            <if test="iname!=null || iname!='' ">
+                AND name LIKE concat('%',#{iname},'%')
+            </if>
+        </where>
         ORDER BY ${vo.sortBy} ${vo.orderBy}
         LIMIT #{page},#{vo.pageSize}
     </select>
+
     <update id="saveEmployeeInfo">
         UPDATE employee
         SET name      = #{dto.name},
@@ -18,6 +24,5 @@
             salary_jb = #{dto.salary_jb},
             salary_dj = #{dto.salary_dj}
         where id = #{dto.id}
-
     </update>
 </mapper>

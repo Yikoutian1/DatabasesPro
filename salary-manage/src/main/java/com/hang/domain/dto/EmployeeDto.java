@@ -15,9 +15,10 @@ import java.io.Serializable;
  * @author Calyee
  * @since 2023-12-04 20:25:15
  */
-@SuppressWarnings("serial")
 @Data
-public class EmployeeDto implements Serializable{
+@AllArgsConstructor
+@NoArgsConstructor
+public class EmployeeDto {
     private Integer id;
     //员工姓名
     private String name;
@@ -29,8 +30,6 @@ public class EmployeeDto implements Serializable{
     private String salaryJb;
     //工资等级
     private String salaryDj;
-
-
 
 }
 
