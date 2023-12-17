@@ -1,5 +1,6 @@
 <template>
   <div class="table">
+    <el-button type="primary" size="small" @click="addSalaryInfo()">添加新的薪资信息</el-button>
     <el-table :data="salaryInfoList" border style="width: 100%" :expand-row-keys="expandRowKeys"
       :row-class-name="tableRowClassName" @row-click="handleRowClick">
 
@@ -35,10 +36,12 @@
       <el-table-column label="操作" width="150">
         <template slot-scope="scope">
           <el-button type="primary" size="small" @click="handleShowInfo(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small">删除</el-button>
+          <el-button type="danger" size="small" @click="deleteChoiseRow(scope.row.empId)">删除</el-button>
         </template>
       </el-table-column>
+
     </el-table>
+
 
 
     <el-dialog title="员工的薪资信息修改" :visible.sync="showSalaryInfoDialogTableVisible">
@@ -71,6 +74,36 @@
       </el-form>
     </el-dialog>
 
+    <el-dialog title="新增员工薪资信息" :visible.sync="showSalaryInfoDialogTableVisible">
+      <el-form style="font-size: 16px" :model="newData" ref="newData" label-width="100px" class="class-newData">
+        <el-form-item label="员工编号" prop="empId">
+          <el-input v-model="newData.empId"></el-input>
+        </el-form-item>
+        <el-form-item label="员工姓名" prop="empName">
+          <el-input v-model="newData.empName"></el-input>
+        </el-form-item>
+        <el-form-item label="员工基础工资" prop="baseSalary">
+          <el-input v-model="newData.baseSalary"></el-input>
+        </el-form-item>
+        <el-form-item label="员工岗位工资" prop="jobSalary">
+          <el-input v-model="newData.jobSalary"></el-input>
+        </el-form-item>
+        <el-form-item label="员工工龄工资" prop="expSalary">
+          <el-input v-model="newData.expSalary"></el-input>
+        </el-form-item>
+        <el-form-item label="公司福利" prop="companyBenefits">
+          <el-input v-model="newData.companyBenefits"></el-input>
+        </el-form-item>
+        <el-form-item label="员工实得工资" prop="netSalary">
+          <el-input v-model="newData.netSalary"></el-input>
+        </el-form-item>
+        <el-form-item style="display: flex; justify-content: center;">
+          <el-button type="primary" @click="confirmAdd">保存</el-button>
+          <el-button @click="cancelAdd">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+
 
 
   </div>
@@ -79,12 +112,15 @@
 
 <script>
 import { getSalaryInfo } from "@/api/salaryInfo";
+import axios from 'axios';
+
 
 export default {
   name: "salaryInfo",
   data () {
     return {
-      showSalaryInfoDialogTableVisible: false, // 控制显示员工页的弹窗按钮
+      showSalaryInfoDialogTableVisible: false, // 控制弹窗按钮
+      showAddSalaryInfoDialogTableVisible: false, //新增弹窗
       page: {
 
         sortBy: "id", // 默认排序字段id
@@ -93,6 +129,7 @@ export default {
       oldChoiseRow: [], // 旧表单
       choiseRow: [], // 选择的行信息
       salaryInfoList: [],
+      newData: [],
     };
   },
 
@@ -108,13 +145,24 @@ export default {
       return '';
     },
 
-
-
     /**
-     * 保存
+     * 修改
      */
     confirmUpdate () {
       console.info(this.choiseRow);
+      const _this = this;
+      const url = 'http://localhost:9000/salaryInfo/updateSalaryInfo';
+      const data = _this.choiseRow;
+
+      axios.post(url, data)
+        .then(response => {
+          console.log(response.data);
+          alert("保存成功");
+          this.showSalaryInfoDialogTableVisible = false;
+        })
+        .catch(error => {
+          console.error('Error sending data to the backend: ', error);
+        });
     },
     /**
      * 取消
@@ -124,6 +172,65 @@ export default {
       _this.oldChoiseData();
       _this.showSalaryInfoDialogTableVisible = false;
     },
+    /**
+     * 新增
+     */
+    addSalaryInfo () {
+      const _this = this;
+      _this.showSalaryInfoDialogTableVisible = true;
+
+    },
+    /**
+     * 提交新增
+     */
+    confirmAdd () {
+      const _this = this;
+      const url = 'http://localhost:9000/salaryInfo/insertSalaryInfo';
+      const data = {
+        empId: this.newData.empId,
+        empName: this.newData.empName,
+        baseSalary: this.newData.baseSalary,
+        jobSalary: this.newData.jobSalary,
+        expSalary: this.newData.expSalary,
+        companyBenefits: this.newData.companyBenefits,
+        netSalary: this.newData.netSalary
+      };
+      axios.post(url, data)
+        .then(response => {
+          console.log(response.data);
+          alert("添加成功");
+          this.showSalaryInfoDialogTableVisible = false;
+        })
+        .catch(error => {
+          console.error('Error sending data to the backend: ', error);
+        });
+    },
+    /**
+     * 
+     * 删除
+     */
+    deleteChoiseRow (id) {
+      const _this = this;
+      const url = `http://localhost:9000/salaryInfo/deleteSalaryInfo/${id}`;
+      axios.delete(url)
+        .then(response => {
+          _this.getSalaryInfo(); //刷新 重新加载数据
+
+          console.log(response.data);
+          this.$message.success('删除成功');
+
+
+        })
+        .catch(error => {
+          console.error('Error delete : ', error);
+          this.$message.error('删除失败');
+        });
+
+    },
+    //刷新 重新加载数据
+    // loadData () {
+    //   getSalaryInfo();
+    // },
     /**
      * 原表单数据
      */
@@ -185,24 +292,9 @@ export default {
       });
     },
 
-    open () {
-      this.$prompt('请输入邮箱', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-        inputErrorMessage: '邮箱格式不正确'
-      }).then(({ value }) => {
-        this.$message({
-          type: 'success',
-          message: '你的邮箱是: ' + value
-        });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '取消输入'
-        });
-      });
-    },
+
+
+
   },
   mounted () {
     const _this = this;
@@ -215,7 +307,7 @@ export default {
 
 
 
-<!-- 
+<!--
 <style  lang="css" scoped>
 .table {
   text-align: center;

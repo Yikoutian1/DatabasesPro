@@ -3,9 +3,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hang.mapper.SalaryInfoMapper">
 
+    <insert id="insertSalaryInfo">
+        insert into salary_info (emp_id, emp_name,base_salary ,job_salary, exp_salary, company_benefits, net_salary)
+        values ( #{empId} ,#{empName}, #{jobSalary}, #{baseSalary}, #{expSalary}, #{companyBenefits}, #{netSalary} );
+    </insert>
+
+
+    <update id="updateSalaryInfo">
+        UPDATE salary_info
+        SET emp_name         = #{empName},
+            job_salary       = #{jobSalary},
+            exp_salary       = #{expSalary},
+            company_benefits = #{companyBenefits},
+            net_salary       = #{netSalary}
+        where emp_id = #{empId}
+    </update>
+
+    <delete id="deleteSalaryInfo">
+        delete
+        from salary_info
+        where emp_id = #{empId}
+    </delete>
+
 
     <select id="getSalaryInfo" resultType="com.hang.domain.po.SalaryInfo">
-        SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits,net_salary
+        SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits, net_salary
         FROM salary_info
     </select>
+
+
 </mapper>
