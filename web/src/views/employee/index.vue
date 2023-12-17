@@ -1,5 +1,54 @@
 <template>
-  <div class="login-container">
+  <div class="main">
+    <div class="choise">
+      <el-input
+        v-model="input"
+        placeholder="请输入员工名称"
+        style="width: 200px"
+        @keyup.native.enter="query"
+      >
+      </el-input>
+      <el-button
+        style="margin-left: 5px"
+        type="primary"
+        @click="query"
+        class="el-button-search"
+        >搜索员工</el-button
+      >
+      <el-button style="margin-left: 5px" type="success" @click="addEmployee"
+        >新增员工</el-button
+      >
+      <el-select
+        style="margin-left: 5px"
+        v-model="selectDept"
+        @change="filterDept(selectDept)"
+        filterable
+        placeholder="部门筛选"
+      >
+        <el-option
+          v-for="item in deptOptions"
+          :key="item"
+          :label="item"
+          :value="item"
+        >
+        </el-option>
+      </el-select>
+      <el-select
+        style="margin-left: 5px"
+        v-model="selectJb"
+        filterable
+        @change="filterJb(selectJb)"
+        placeholder="部门筛选"
+      >
+        <el-option
+          v-for="item in salaryJbOptions"
+          :key="item"
+          :label="item"
+          :value="item"
+        >
+        </el-option>
+      </el-select>
+    </div>
     <el-table
       :data="employeeList"
       v-loading="loading"
@@ -13,8 +62,8 @@
         label="员工编号"
         width="120"
       ></el-table-column>
-      <el-table-column prop="name" label="姓名" width="140"> </el-table-column>
-      <el-table-column prop="sex" label="性别" width="70">
+      <el-table-column prop="name" label="姓名" width="160"> </el-table-column>
+      <el-table-column prop="sex" label="性别" width="120">
         <template #default="scope">
           <el-tag size="medium " type="success" v-if="scope.row.sex == 1">
             男
@@ -25,12 +74,12 @@
       <el-table-column
         prop="dept"
         label="所在部门"
-        width="140"
+        width="170"
       ></el-table-column>
       <el-table-column
         prop="salaryJb"
         label="工资级别"
-        width="170"
+        width="200"
       ></el-table-column>
       <el-table-column
         prop="salaryDj"
@@ -115,6 +164,47 @@
         </el-form-item>
       </el-form>
     </el-dialog>
+    <el-dialog title="员工添加" :visible.sync="addVisible">
+      <el-form
+        style="font-size: 16px"
+        label-width="100px"
+        class="class-choiseRow"
+      >
+        <el-form-item label="姓名">
+          <el-input v-model="addRow.name"></el-input>
+        </el-form-item>
+        <el-form-item label="性别">
+          <el-radio v-model="addRow.sex" label="1">男</el-radio>
+          <el-radio v-model="addRow.sex" label="0">女</el-radio>
+        </el-form-item>
+        <el-form-item label="所在部门">
+          <el-select v-model="addRow.dept" placeholder="请选择">
+            <el-option
+              v-for="item in deptOptions"
+              :key="item"
+              :label="item"
+              :value="item"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="工资级别">
+          <el-select v-model="addRow.salaryJb" placeholder="请选择">
+            <el-option
+              v-for="item in salaryJbOptions"
+              :key="item"
+              :label="item"
+              :value="item"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="confirmAdd()">保存</el-button>
+          <el-button @click="concelAdd()">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -126,12 +216,14 @@ import { getSalaryLevel } from "@/api/employee";
 import { updateEmployeeInfo } from "@/api/employee";
 import { saveEmployeeInfo } from "@/api/employee";
 import { delEmployee } from "@/api/employee";
+import { getEmployeeByM } from "@/api/employee";
 
 export default {
   name: "employee",
   data() {
     return {
       showEmpInfoDialogTableVisible: false, // 控制显示员工页的弹窗按钮
+      addVisible: false, // add vis
       page: {
         pageSize: 20, // 默认一页20个
         currentPage: 1, // 默认第一页
@@ -139,16 +231,24 @@ export default {
         sortBy: "id", // 默认排序字段id
         orderBy: "ASC", // 默认以ASC排序
       },
+      addRow: {
+        name: "",
+        sex: 1,
+        dept: "",
+        salaryJb: "",
+      }, // Add
       choiseRow: [], // 选择的行信息
       oldChoiseRow: [], // 旧表单
-      employeeList: [],
+      employeeList: [], // 员工显示集合
       loading: true, // 加载动画
       salaryJbOptions: [], // 工资级别选择列表
       deptOptions: [], // 部门名
+      input: "", // 搜索
+      selectDept: '',
+      selectJb: '',
     };
   },
   methods: {
-    
     del(id) {
       this.$confirm("确定要删除吗？", "删除操作", {
         confirmButtonText: "确定",
@@ -215,15 +315,42 @@ export default {
         }
       });
     },
+    // ==== Add ====
+    addEmployee() {
+      const _this = this;
+      _this.addVisible = true;
+    },
+    concelAdd() {
+      const _this = this;
+      _this.addVisible = false;
+      _this.addRow = [];
+    },
+    confirmAdd() {
+      const _this = this;
+      // console.info(_this.addRow)
+      saveEmployeeInfo(_this.addRow).then((res) => {
+        if (res.code === 200) {
+          this.$message({
+            message: "新增成功",
+            type: "success",
+          });
+          _this.getEmployeePageInfo();
+        } else {
+          this.$message.error("服务器内部发生错误");
+        }
+      });
+      _this.addRow = [];
+      _this.addVisible = false;
+    },
+    // ============
     /**
-     * TODO 处理修改员工信息保存
+     * 修改员工信息
      */
     handleShowInfo(row) {
       const _this = this;
       _this.showEmpInfoDialogTableVisible = true;
       _this.saveOldChoiseRowInfo(row);
       _this.choiseRow = row;
-      // console.info(_this.choiseRow);
     },
     // 旧表单
     saveOldChoiseRowInfo(row) {
@@ -283,6 +410,52 @@ export default {
         }
       });
     },
+    query() {
+      const _this = this;
+      let param = new URLSearchParams();
+      param.append("pageNum", _this.page.currentPage);
+      param.append("pageSize", _this.page.pageSize);
+      param.append("orderBy", _this.page.orderBy);
+      param.append("sortBy", _this.page.sortBy);
+      getEmployeeByM(param, _this.input).then((res) => {
+        let jsonModel = res.data;
+        if (res.code === 200) {
+          _this.employeeList = [];
+          this.$message({
+            message: "查询成功",
+            type: "success",
+          });
+          _this.page.total = parseInt(jsonModel.total);
+          _this.employeeList = jsonModel.records;
+          _this.loading = false;
+        } else {
+          this.$message.error("服务器打瞌睡了");
+        }
+      });
+    },
+    // TODO 有闪动Bug
+    filterDept(name) {
+      const _this = this;
+      _this.getEmployeePageInfo();
+      _this.loading = false;
+      setTimeout(() => {
+        _this.employeeList = _this.employeeList.filter(
+          (item) => item.dept == name
+        );
+      }, 200);
+      this.selectJd = ''
+    },
+    filterJb(name) {
+      const _this = this;
+      _this.getEmployeePageInfo();
+      _this.loading = false;
+      setTimeout(() => {
+        _this.employeeList = _this.employeeList.filter(
+          (item) => item.salaryJb == name
+        );
+      }, 200);
+      _this.selectDept = ''
+    },
   },
   mounted() {
     const _this = this;
@@ -315,5 +488,10 @@ export default {
 }
 .mmleft {
   margin-left: 1%;
+}
+.main {
+  .choise {
+    margin: 1%;
+  }
 }
 </style>

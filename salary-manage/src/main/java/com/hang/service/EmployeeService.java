@@ -16,6 +16,7 @@ public interface EmployeeService extends IService<Employee> {
 
     Result getEmployeeInfo(PageInfoDto pageInfo);
 
-    Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo);
+    Result getEmployeeByM(PageInfoDto pageInfo,String name);
+
 }
 

@@ -1,7 +1,6 @@
 package com.hang.service.impl;
 
 
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -43,9 +42,9 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         }
         return Result
                 .success(EmployeeVo.builder()
-                .records(records)
-                .total(page.getTotal())
-                .build());
+                        .records(records)
+                        .total(page.getTotal())
+                        .build());
     }
 
     @Autowired
@@ -53,13 +52,23 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
 
     /**
      * 数据库课设当然要写点SQL啦
+     *
      * @param pageInfo 分页参数
      * @return List
      */
     @Override
-    public Result useMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
-        List<Employee> employeeInfo = employeeMapper.getEmployeeInfo(pageInfo,pageInfo.getMybatisPage());
-        return Result.success(employeeInfo);
+    public Result getEmployeeByM(PageInfoDto pageInfo, String name) {
+        List<Employee> employees = employeeMapper.getEmployeeInfo(pageInfo,
+                pageInfo.getMybatisPage(),
+                name);
+        int size = employees.size();
+        if (0 == size) {
+            return Result.build(null, 201, "用户列表为空");
+        }
+        return Result.success(EmployeeVo.builder()
+                .records(employees)
+                .total((long) size)
+                .build());
     }
 }
 

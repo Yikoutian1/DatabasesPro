@@ -6,6 +6,7 @@ import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
 import com.hang.result.Result;
 import com.hang.service.EmployeeService;
+import com.hang.service.SalaryLevelService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,19 +32,29 @@ public class EmployeeController {
      * @return Result<List < Employee>>
      */
 
-    @RequestMapping(value = "/getEmployeeInfo", method = {RequestMethod.POST, RequestMethod.GET})
+    @PostMapping(value = "/getEmployeeInfo")
     public Result getEmployeeInfo(PageInfoDto pageInfo) {
         return employeeService.getEmployeeInfo(pageInfo);
     }
 
-    @RequestMapping(value = "/useMyBatisMethodToGetEmployeeInfo", method = {RequestMethod.POST, RequestMethod.GET})
-    public Result testUseMyBatisMethodToGetEmployeeInfo(PageInfoDto pageInfo) {
-        return employeeService.useMyBatisMethodToGetEmployeeInfo(pageInfo);
+    /**
+     * 同上
+     *
+     * @param pageInfo 页面信息
+     * @return List < Employee>
+     */
+    @PostMapping(value = "/getEmployeeByM")
+    public Result getEmployeeByM(PageInfoDto pageInfo,
+                                 @RequestParam(value = "name", required = false) String name) {
+        return employeeService.getEmployeeByM(pageInfo, name);
     }
+
+    @Autowired
+    private SalaryLevelService salaryLevelService;
 
     /**
      * 新增用户
-     * TODO 前端新增用户
+     * 前端新增用户
      *
      * @param employeeDto Form
      * @return 200
@@ -53,6 +64,9 @@ public class EmployeeController {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
         employee.setId(null); // 置id为空
+        String salaryJb = employeeDto.getSalaryJb();
+        String data = (String) salaryLevelService.getSalaryContract(salaryJb).getData();
+        employee.setSalaryDj(data);
         employeeService.save(employee);
         return Result.success();
     }
