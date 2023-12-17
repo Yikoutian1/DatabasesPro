@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * （SalaryInfo）表服务实现类
+ */
 @Service("salaryInfoService")
 public class SalaryInfoServiceImpl extends ServiceImpl<SalaryInfoMapper, SalaryInfo> implements SalaryInfoService {
 
@@ -37,5 +40,20 @@ public class SalaryInfoServiceImpl extends ServiceImpl<SalaryInfoMapper, SalaryI
                         .build());
     }
 
+
+    @Override
+    public void updateSalaryInfo(SalaryInfo salaryInfo) {
+        salaryInfoMapper.updateSalaryInfo(salaryInfo);
+    }
+
+    @Override
+    public void deleteSalaryInfo(Integer id) {
+        salaryInfoMapper.deleteSalaryInfo(id);
+    }
+
+    @Override
+    public void insertSalaryInfo(SalaryInfo salaryInfo) {
+        salaryInfoMapper.insertSalaryInfo(salaryInfo);
+    }
 
 }

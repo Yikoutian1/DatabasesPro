@@ -7,3 +7,11 @@ export function getSalaryInfo (data) {
     data,
   });
 }
+
+export function addSalaryInfo (data) {
+  return request({
+    url: "/salaryInfo/insertSalaryInfo",
+    method: "post",
+    data,
+  });
+}
