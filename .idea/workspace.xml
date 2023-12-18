@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="" />
+    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/handler/CustomerExceptionHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,8 +186,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
+        <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="JUnit.PasswordUtilsTest.testPassword" />
         <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
