@@ -449,7 +449,7 @@ export default {
           icon: "rect",
           orient: "vertical",
           top: "center",
-          right: "5%",
+          right: "10%",
           itemGap: 20,
           textStyle: {
             align: "left",
@@ -797,10 +797,16 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  .headtext{
+  width: 1920px;
+  height: 950px;
+  // background-color: #304156;
+  .headtext {
+    margin-left: 1%;
+    width: 1600px;
+    margin-top: 7px;
     display: flex;
-    font-size: 20px;
-    color: red;
+    font-size: 25px;
+
     .textleft {
       left: 0;
       margin-left: 23%;
@@ -815,13 +821,12 @@ export default {
   .up {
     display: flex;
     .charts {
-      margin-left: 1%;
-      margin-top: 1%;
-      height: 570px;
-      width: 800px;
+      margin-top: 7px;
+      height: 600px;
+      width: 850px;
     }
   }
-  .down{
+  .down {
     margin-top: 1%;
     margin-left: 1%;
   }

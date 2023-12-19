@@ -34,8 +34,7 @@ public class SalaryInfoServiceImpl extends ServiceImpl<SalaryInfoMapper, SalaryI
         if (records == null) {
             return Result.build(null, 201, "用户列表为空");
         }
-        return Result
-                .success(SalaryInfoVo.builder()
+        return Result.success(SalaryInfoVo.builder()
                         .records(records)
                         .build());
     }
