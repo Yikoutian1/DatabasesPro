@@ -80,19 +80,32 @@ export const constantRoutes = [
       }
     ]
   },
- // 公司管理
- {
-  path: '/company',
-  component: Layout,
-  children: [
-    {
-      path: 'index',
-      name: 'company',
-      component: () => import('@/views/company/index'),
-      meta: { title: '公司管理', icon: 'form' }
-    }
-  ]
-},
+  // 公司管理
+  {
+    path: '/company',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'company',
+        component: () => import('@/views/company/index'),
+        meta: { title: '公司管理', icon: 'form' }
+      }
+    ]
+  },
+  // 工资级别管理 和 工龄工资管理
+  {
+    path: '/salaryExpLevel',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'salaryExpLevel',
+        component: () => import('@/views/salaryExpLevel/index'),
+        meta: { title: '工资级别管理', icon: 'form' }
+      }
+    ]
+  },
 
 
 

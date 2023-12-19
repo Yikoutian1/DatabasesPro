@@ -60,4 +60,9 @@ public class SalaryLevelServiceImpl extends ServiceImpl<SalaryLevelMapper, Salar
         // 合并 返回
         return newRes;
     }
+
+    @Override
+    public Result getAllInfo() {
+        return Result.success(baseMapper.selectList(null));
+    }
 }
