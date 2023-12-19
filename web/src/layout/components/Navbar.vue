@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 顶部导航
 .navbar {
   height: 50px;
   overflow: hidden;
