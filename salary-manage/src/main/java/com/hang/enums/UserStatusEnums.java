@@ -27,4 +27,13 @@ public class UserStatusEnums {
      * 普通用户权限
      */
     public final static Integer NORMAL_USER_ROLE = 1;
+    /**
+     * 男
+     */
+    public final static String MALE = "1";
+    /**
+     * 女
+     */
+    public final static String FEMALE = "0";
+
 }

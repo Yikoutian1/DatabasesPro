@@ -30,6 +30,7 @@
         <mybatis.plus.boot.starter.version>3.4.2</mybatis.plus.boot.starter.version>
         <druid.spring.boot.starter.version>1.2.15</druid.spring.boot.starter.version>
         <hutool.version>5.8.11</hutool.version>
+        <easyexcel.version>3.3.3</easyexcel.version>
     </properties>
 
 
@@ -53,7 +54,11 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.spring.boot.starter.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

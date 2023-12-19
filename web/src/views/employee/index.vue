@@ -48,6 +48,9 @@
         >
         </el-option>
       </el-select>
+      <el-button style="margin-left: 5px" @click="toExportExcel"
+        >导出Excel</el-button
+      >
     </div>
     <el-table
       :data="employeeList"
@@ -209,6 +212,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { getEmployeeInfo } from "@/api/employee";
 import { getDeptNameList } from "@/api/employee";
 import { getSalaryOnlyLevel } from "@/api/employee";
@@ -217,6 +221,7 @@ import { updateEmployeeInfo } from "@/api/employee";
 import { saveEmployeeInfo } from "@/api/employee";
 import { delEmployee } from "@/api/employee";
 import { getEmployeeByM } from "@/api/employee";
+import { exportExcel } from "@/api/upload";
 
 export default {
   name: "employee",
@@ -244,8 +249,8 @@ export default {
       salaryJbOptions: [], // 工资级别选择列表
       deptOptions: [], // 部门名
       input: "", // 搜索
-      selectDept: '',
-      selectJb: '',
+      selectDept: "",
+      selectJb: "",
     };
   },
   methods: {
@@ -443,7 +448,7 @@ export default {
           (item) => item.dept == name
         );
       }, 200);
-      this.selectJd = ''
+      this.selectJd = "";
     },
     filterJb(name) {
       const _this = this;
@@ -454,7 +459,24 @@ export default {
           (item) => item.salaryJb == name
         );
       }, 200);
-      _this.selectDept = ''
+      _this.selectDept = "";
+    },
+    toExportExcel() {
+      axios({
+        method: "post",
+        url: "http://localhost:9000/upload/export/forEmployee",
+        responseType: "blob", //设置返回信息为二进制文件，默认为json
+        data: this.employeeList, //后台照常用@RequestBody接收即可
+      }).then((res) => {
+        // console.info(res);
+        let blob = new Blob([res.data], { type: "application/xlsx" });
+        let url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a"); //创建a标签
+        link.href = url;
+        link.download = "员工信息_" + new Date().getTime() + ".xlsx"; //重命名文件
+        link.click();
+        URL.revokeObjectURL(url);
+      });
     },
   },
   mounted() {

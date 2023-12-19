@@ -66,7 +66,12 @@ spring:
         allow: 127.0.0.1            #上线后请将密码设置 复杂，且允许远程访问
         # IP黑名单（共同存在时，deny优先于allow）
         deny:
-
+  servlet:
+    multipart:
+      # 配置单个上传文件大小
+      file-size-threshold: 5MB
+      # 配置总上传大小
+      max-request-size: 10MB
 # 日志
 logging:
   level:
