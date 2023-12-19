@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  * @DATE 2023/11/30 030 16:13
  * @Version 1.0
  */
+
 @SpringBootApplication
 @MapperScan("com.hang.mapper")
 public class SalaryApplication {

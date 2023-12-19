@@ -40,18 +40,17 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         if (records == null) {
             return Result.build(null, 201, "用户列表为空");
         }
-        return Result
-                .success(EmployeeVo.builder()
-                        .records(records)
-                        .total(page.getTotal())
-                        .build());
+        return Result.success(EmployeeVo.builder()
+                .records(records)
+                .total(page.getTotal())
+                .build());
     }
 
     @Autowired
     private EmployeeMapper employeeMapper;
 
     /**
-     * 数据库课设当然要写点SQL啦
+     * 分页查询员工信息
      *
      * @param pageInfo 分页参数
      * @return List

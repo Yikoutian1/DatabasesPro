@@ -1,7 +1,7 @@
 db:
   url: database_lessons
   dname: root
-  dpwd: 1qiulihang
+  dpwd: 123456
 
 mybatis-plus:
   configuration:

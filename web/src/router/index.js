@@ -80,7 +80,19 @@ export const constantRoutes = [
       }
     ]
   },
-
+ // 公司管理
+ {
+  path: '/company',
+  component: Layout,
+  children: [
+    {
+      path: 'index',
+      name: 'company',
+      component: () => import('@/views/company/index'),
+      meta: { title: '公司管理', icon: 'form' }
+    }
+  ]
+},
 
 
 
