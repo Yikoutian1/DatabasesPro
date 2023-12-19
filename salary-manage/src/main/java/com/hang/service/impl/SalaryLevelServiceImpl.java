@@ -65,4 +65,9 @@ public class SalaryLevelServiceImpl extends ServiceImpl<SalaryLevelMapper, Salar
     public Result getAllInfo() {
         return Result.success(baseMapper.selectList(null));
     }
+
+    @Override
+    public void updateSalary(SalaryLevel salaryLevel) {
+        salaryLevelMapper.updateSalaryLevel(salaryLevel);
+    }
 }

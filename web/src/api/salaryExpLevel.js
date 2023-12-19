@@ -15,3 +15,11 @@ export function getSalaryLevel (data) {
     data,
   });
 }
+
+export function updateSalaryInfo (data) {
+  return request({
+    url: "/salaryLevel/updateSalaryInfo",
+    method: "post",
+    data,
+  });
+}

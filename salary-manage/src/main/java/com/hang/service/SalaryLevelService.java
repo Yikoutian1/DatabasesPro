@@ -14,4 +14,6 @@ public interface SalaryLevelService extends IService<SalaryLevel> {
     List<String> getSalaryOnlyLevel();
 
     Result getAllInfo();
+
+    void updateSalary(SalaryLevel salaryLevel);
 }

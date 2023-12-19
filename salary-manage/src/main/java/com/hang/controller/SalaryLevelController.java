@@ -1,6 +1,7 @@
 package com.hang.controller;
 
 
+import com.hang.domain.po.SalaryInfo;
 import com.hang.domain.po.SalaryLevel;
 import com.hang.domain.vo.SalarySelectVo;
 import com.hang.enums.ResultCodeEnum;
@@ -66,5 +67,17 @@ public class SalaryLevelController {
         List<String> salaryContract = salaryLevelService.getSalaryOnlyLevel();
         return Result.success(salaryContract);
     }
+
+    /**
+     * 修改工资金额
+     * @param salaryLevel
+     * @return
+     */
+    @RequestMapping(value = "/updateSalaryInfo", method = {RequestMethod.POST, RequestMethod.GET})
+    public Result updateSalary(@RequestBody SalaryLevel salaryLevel) {
+        salaryLevelService.updateSalary(salaryLevel);
+        return Result.success();
+    }
+
 }
 
