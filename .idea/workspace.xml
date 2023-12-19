@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="" />
+    <list default="true" id="9ddc7977-0454-4778-a393-6eda725edacf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/SalaryInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/SalaryInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/SalaryInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/java/com/hang/service/impl/SalaryInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/SalaryInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/SalaryInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/views/salaryInfo/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/salaryInfo/index.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +44,11 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="CH-EN-X &lt;1211931367@qq.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -43,6 +56,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/salary-manage/src/main/java/com/hang/controller/SalaryInfoController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/salary-manage/src/main/java/com/hang/mapper/SalaryInfoMapper.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/salary-manage/src/main/resources/com/hang/mapper/SalaryInfoMapper.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,7 +106,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;f76f8a4055033fb7839d76eba0c84899&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ce545f45d0b86d068038e6c8b323343a&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -184,8 +202,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
+        <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="JUnit.PasswordUtilsTest.testPassword" />
         <item itemvalue="Spring Boot.SecurityApplication" />
         <item itemvalue="Spring Boot.SalaryApplication" />
@@ -214,6 +232,11 @@
       <workItem from="1701603950645" duration="3584000" />
       <workItem from="1701686958894" duration="15012000" />
       <workItem from="1701704000156" duration="859000" />
+      <workItem from="1702812235812" duration="2255000" />
+      <workItem from="1702896716582" duration="32000" />
+      <workItem from="1702898300645" duration="1147000" />
+      <workItem from="1702909206070" duration="2929000" />
+      <workItem from="1702966066670" duration="4994000" />
     </task>
     <task id="LOCAL-00001" summary="init readme.md">
       <created>1701325915866</created>
@@ -320,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702114741701</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="页面微调">
+      <created>1702814214526</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702814214526</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +379,8 @@
     <MESSAGE value="feat(login): 后台登录" />
     <MESSAGE value="feat(开发分支): 员工基础信息管理" />
     <MESSAGE value="feat(po): 实体类" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(po): 实体类" />
+    <MESSAGE value="页面微调" />
+    <option name="LAST_COMMIT_MESSAGE" value="页面微调" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
