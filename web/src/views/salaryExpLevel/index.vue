@@ -4,7 +4,7 @@
       <div style="text-align: center; font-size: 24px; border: 1px solid gainsboro; line-height: 50px;">工资级别表</div>
       <el-table :data="expInfoList" border style="width: 100%">
         <el-table-column prop="salGrade" label="工资级别" width="150"></el-table-column>
-        <el-table-column prop="salJobName" label="工作名" width="150"></el-table-column>
+        <el-table-column prop="salJobName" label="岗位名" width="150"></el-table-column>
         <el-table-column prop="salAmount" label="工资金额" width="150">
           <template slot-scope="scope">
             <span>￥{{ scope.row.salAmount }}</span>
@@ -23,7 +23,7 @@
       <div style="text-align: center; font-size: 24px; border: 1px solid gainsboro; line-height: 50px;">工龄表</div>
       <el-table :data="levelInfoList" border style="width: 100%">
         <el-table-column prop="exp" label="工作经验" width="150"></el-table-column>
-        <el-table-column prop="salAmount" label="工资" width="150">
+        <el-table-column prop="salAmount" label="工资金额" width="150">
           <template slot-scope="scope">
             ￥{{ scope.row.salAmount }}
           </template>
@@ -36,25 +36,42 @@
       </el-table>
     </div>
 
-    <!-- <el-dialog title="员工的薪资信息修改" :visible.sync="showSalaryInfoDialogTableVisible">
+    <el-dialog title="员工的薪资信息修改" :visible.sync="dialogLevel">
       <el-form style="font-size: 16px" :model="choiseRow" ref="choiseRow" label-width="100px" class="class-choiseRow">
-        <el-form-item label="员工编号" prop="empId">
-          <span> {{ choiseRow.empId }} </span>
+        <el-form-item label="工资级别" prop="salGrade">
+          <span> {{ choiseRow.salGrade }} </span>
         </el-form-item>
 
-        <el-form-item label="员工姓名" prop="empName">
-          <el-input v-model="choiseRow.empName"></el-input>
+        <el-form-item label="岗位名" prop="salJobName">
+          <span> {{ choiseRow.salJobName }} </span>
         </el-form-item>
-        <el-form-item label="员工基础工资" prop="baseSalary">
-          <el-input v-model="choiseRow.baseSalary"></el-input>
+        <el-form-item label="工资金额" prop="salAmount">
+          <el-input v-model="choiseRow.salAmount"></el-input>
         </el-form-item>
 
         <el-form-item style="display: flex; justify-content: center;">
           <el-button type="primary" @click="confirmUpdate()">保存</el-button>
-          <el-button @click="concelUpdate()">取消</el-button>
+          <el-button @click="dialogLevel = false">取消</el-button>
         </el-form-item>
       </el-form>
-    </el-dialog> -->
+    </el-dialog>
+
+    <el-dialog title="员工的薪资信息修改" :visible.sync="dialogExp">
+      <el-form style="font-size: 16px" :model="choiseRow" ref="choiseRow" label-width="100px" class="class-choiseRow">
+        <el-form-item label="工资级别" prop="exp">
+          <span> {{ choiseRow.exp }} </span>
+        </el-form-item>
+
+        <el-form-item label="工资金额" prop="salAmount">
+          <el-input v-model="choiseRow.salAmount"></el-input>
+        </el-form-item>
+
+        <el-form-item style="display: flex; justify-content: center;">
+          <el-button type="primary" @click="confirmUpdate()">保存</el-button>
+          <el-button @click="dialogExp = false">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
 
   </div>
 </template>
@@ -63,6 +80,7 @@
 <script>
 import { getSalaryExp } from "@/api/salaryExpLevel";
 import { getSalaryLevel } from "@/api/salaryExpLevel";
+import { updateSalaryInfo } from "@/api/salaryExpLevel";
 import axios from 'axios';
 
 
@@ -74,21 +92,64 @@ export default {
       expInfoList: [],
       dialogLevel: false,
       dialogExp: false,
-      editedRow: null,
+      choiseRow: [], // 选择的行信息
     }
   },
   methods: {
     editSalaryAndLevel (row) {
       const _this = this;
       console.log(row);
-      //_this.editedRow = row;
+      _this.choiseRow = row;
       _this.dialogLevel = true;
     },
     editSalaryAndExp (row) {
       const _this = this;
       console.log(row);
-      //_this.editedRow = row;
+      _this.choiseRow = row;
       _this.dialogExp = true;
+    },
+    confirmUpdate () {
+      const _this = this;
+
+      console.log(_this.choiseRow.ss)
+
+      if (_this.choiseRow.salGrade != undefined) {
+        let data = {
+          salGrade: _this.choiseRow.salGrade,
+          salJobName: _this.choiseRow.salJobName,
+          salAmount: _this.choiseRow.salAmount
+        }
+        let url = 'http://localhost:9000/salaryLevel/updateSalaryInfo';
+        axios.post(url, data)
+          .then((res) => {
+            console.log(res.data);
+            _this.$message.success("修改成功！")
+            _this.dialogLevel = false;
+          })
+          .catch(error => {
+            _this.$message.error("修改失败")
+          });
+      };
+
+      if (_this.choiseRow.exp != undefined) {
+        let data = {
+          exp: _this.choiseRow.exp,
+          salAmount: _this.choiseRow.salAmount
+        }
+        let url = 'http://localhost:9000/experience/updateSalaryExp';
+        axios.post(url, data)
+          .then((res) => {
+            console.log(res.data);
+            _this.$message.success("修改成功！")
+            _this.dialogExp = false;
+          })
+          .catch(error => {
+            _this.$message.error("修改失败")
+          });
+      };
+
+
+
     },
     /**
      * 统一请求处理

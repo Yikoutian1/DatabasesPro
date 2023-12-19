@@ -4,4 +4,9 @@
 <mapper namespace="com.hang.mapper.ExperienceMapper">
 
 
+    <update id="updateSalary">
+        UPDATE experience
+        SET sal_amount  = #{salAmount}
+        where exp = #{exp}
+    </update>
 </mapper>

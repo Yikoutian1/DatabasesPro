@@ -2,6 +2,8 @@ package com.hang.controller;
 
 
 
+import com.hang.domain.po.Experience;
+import com.hang.domain.po.SalaryLevel;
 import com.hang.result.Result;
 import com.hang.service.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,13 @@ public class ExperienceController{
     @GetMapping("/getAllInfo")
     public Result getAllInfo(){
         return experienceService.getAllInfo();
+    }
+
+
+    @RequestMapping(value = "/updateSalaryExp", method = {RequestMethod.POST, RequestMethod.GET})
+    public Result updateSalary(@RequestBody Experience experience) {
+        experienceService.updateSalary(experience);
+        return Result.success();
     }
 }
 

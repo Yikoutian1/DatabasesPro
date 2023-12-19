@@ -305,7 +305,7 @@ export default {
       axios.post(url, data)
         .then(response => {
           console.log(response.data);
-          alert("保存成功");
+          _this.$message.success("修改成功！")
           this.showSalaryInfoDialogTableVisible = false;
         })
         .catch(error => {
@@ -364,20 +364,28 @@ export default {
     deleteChoiseRow (id) {
       const _this = this;
       const url = `http://localhost:9000/salaryInfo/deleteSalaryInfo/${id}`;
-      axios.delete(url)
-        .then(response => {
-          _this.getSalaryInfo(); //刷新 重新加载数据
 
-          console.log(response.data);
-          this.$message.success('删除成功');
+      this.$confirm('确定要删除吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          axios.delete(url)
+            .then(response => {
+              _this.getSalaryInfo(); //刷新 重新加载数据
+
+              console.log(response.data);
+              _this.$message.success('删除成功');
 
 
+            })
+            .catch(error => {
+              console.error('Error delete : ', error);
+              _this.$message.error('删除失败');
+            });
         })
-        .catch(error => {
-          console.error('Error delete : ', error);
-          this.$message.error('删除失败');
-        });
-
+        .catch(() => { });
     },
 
 

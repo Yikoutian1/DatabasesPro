@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hang.mapper.SalaryLevelMapper">
+    <update id="updateSalaryLevel">
+        UPDATE salary_level
+        SET sal_amount  = #{salAmount}
+        where sal_grade = #{salGrade}
+    </update>
 
 
     <select id="getSalaryContract" resultType="com.hang.domain.po.SalaryLevel">

@@ -14,5 +14,7 @@ import com.hang.result.Result;
 public interface ExperienceService extends IService<Experience> {
 
     Result getAllInfo();
+
+    void updateSalary(Experience experience);
 }
 
