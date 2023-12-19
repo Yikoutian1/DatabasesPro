@@ -89,9 +89,7 @@
 
       <el-dialog title="新增员工薪资信息" :visible.sync="showAddSalaryInfoDialogTableVisible">
         <el-form style="font-size: 16px" :model="newData" ref="newData" label-width="100px" class="class-newData">
-          <!-- <el-form-item label="员工编号" prop="empId">
-            <el-input v-model="newData.empId"></el-input>
-          </el-form-item> -->
+
           <el-form-item label="员工姓名">
             <el-input v-model="newData.empName" style="width: 550px;"></el-input>
           </el-form-item>
@@ -110,7 +108,6 @@
             </el-select> ￥
           </el-form-item>
           <el-form-item label="公司福利">
-            <!-- <el-input v-model="newData.companyBenefits"></el-input> -->
             <el-select v-model="ValueB" placeholder="请选择">
               <el-option v-for="item in optionsBef" :value="item.value" :key="item.value">{{ item.label }}</el-option>
             </el-select> ￥
