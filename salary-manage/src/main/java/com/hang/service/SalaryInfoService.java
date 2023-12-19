@@ -21,6 +21,6 @@ public interface SalaryInfoService {
 
     void insertSalaryInfo(SalaryInfo salaryInfo);
 
-    Result selectSalaryInfo(Object param);
+    Result selectSalaryInfo(String param);
 
 }

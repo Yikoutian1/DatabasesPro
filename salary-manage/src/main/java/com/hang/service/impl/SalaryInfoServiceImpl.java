@@ -57,17 +57,18 @@ public class SalaryInfoServiceImpl extends ServiceImpl<SalaryInfoMapper, SalaryI
     }
 
     @Override
-    public Result selectSalaryInfo(Object param) {
+    public Result selectSalaryInfo(String param) {
 //        QueryWrapper<SalaryInfo> queryWrapper = new QueryWrapper<>();
         List<SalaryInfo> records = salaryInfoMapper.selectSalaryInfo(param);
         // 没有查询到数据
         if (records == null) {
             return Result.build(null, 201, "用户列表为空");
         }
-        return Result
-                .success(SalaryInfoVo.builder()
-                        .records(records)
-                        .build());
+        int size = records.size();
+        return Result.success(SalaryInfoVo.builder()
+                .records(records)
+                .total((long) size)
+                .build());
     }
 
 }

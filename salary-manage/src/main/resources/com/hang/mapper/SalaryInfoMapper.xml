@@ -35,17 +35,9 @@
         SELECT emp_id, emp_name, base_salary, job_salary, exp_salary, company_benefits, net_salary
         FROM salary_info
         <where>
-            <choose>
-                <when test="emp_name != null">
-                    emp_name = #{empName}
-                </when>
-                <otherwise>
-                    emp_id = #{empId}
-                </otherwise>
-            </choose>
+           <if test="emp_name != null || emp_name != ''">
+               AND emp_name LIKE concat('%',#{empName},'%')
+           </if>
         </where>
-
     </select>
-
-
 </mapper>

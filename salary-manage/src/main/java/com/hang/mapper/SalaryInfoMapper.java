@@ -26,7 +26,7 @@ public interface SalaryInfoMapper extends BaseMapper<SalaryInfo> {
 
     void deleteSalaryInfo(Integer id);
 
-    List<SalaryInfo> selectSalaryInfo(Object param);
+    List<SalaryInfo> selectSalaryInfo(String param);
 
 
 }

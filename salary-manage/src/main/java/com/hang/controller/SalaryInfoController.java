@@ -73,7 +73,7 @@ public class SalaryInfoController {
      * @return
      */
     @RequestMapping(value = "/selectSalaryInfo/{param}", method = {RequestMethod.POST, RequestMethod.GET,RequestMethod.DELETE})
-    public Result selectByParam(@PathVariable("param") Object param) {
+    public Result selectByParam(@PathVariable("param") String param) {
         return salaryInfoService.selectSalaryInfo(param);
     }
 

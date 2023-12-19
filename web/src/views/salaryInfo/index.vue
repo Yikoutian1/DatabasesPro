@@ -277,7 +277,7 @@ export default {
         axios.get(url)
           .then(response => {
             const jsonModel = response.data;
-            if (jsonModel.data.total === null) {
+            if (jsonModel.data.total === 0) {
               this.$message.error('搜索失败，没有这条数据');
             } else {
               _this.salaryInfoList = jsonModel.data.records;
