@@ -11,6 +11,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * (Employee)表控制层
  *
@@ -63,6 +65,16 @@ public class SalaryInfoController {
     public Result deleteSalaryInfoById(@PathVariable("id") Integer id) {
         salaryInfoService.deleteSalaryInfo(id);
         return Result.success();
+    }
+
+    /**
+     * 查询
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/selectSalaryInfo/{param}", method = {RequestMethod.POST, RequestMethod.GET,RequestMethod.DELETE})
+    public Result selectByParam(@PathVariable("param") Object param) {
+        return salaryInfoService.selectSalaryInfo(param);
     }
 
 

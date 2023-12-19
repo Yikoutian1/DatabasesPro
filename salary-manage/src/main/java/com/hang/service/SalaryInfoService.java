@@ -20,4 +20,7 @@ public interface SalaryInfoService {
     void deleteSalaryInfo(Integer id);
 
     void insertSalaryInfo(SalaryInfo salaryInfo);
+
+    Result selectSalaryInfo(Object param);
+
 }

@@ -2,7 +2,11 @@
   <div class="main">
 
     <div class="head">
-      <el-button type="primary" @click="addSalaryInfo()">添加新的薪资信息</el-button>
+      <el-input v-model="param" placeholder="请输入员工姓名" style="width: 200px">
+      </el-input>
+      <el-button style="margin-left: 5px" type="primary" @click="Search" class="el-button-search">搜索员工</el-button>
+
+      <el-button type="success" @click="addSalaryInfo()">添加新的薪资信息</el-button>
     </div>
 
 
@@ -12,25 +16,26 @@
         :row-class-name="tableRowClassName" @row-click="handleRowClick">
 
         <el-table-column prop="empId" label="员工编号" width="150">
+          <!-- sortable="custom" :sort-method="sortChange"> -->
         </el-table-column>
-        <el-table-column prop="empName" label="员工姓名" width="120">
+        <el-table-column prop="empName" label="员工姓名" width="150">
         </el-table-column>
-        <el-table-column prop="baseSalary" label="员工基础工资" width="120">
+        <el-table-column prop="baseSalary" label="员工基础工资" width="150">
           <template slot-scope="scope">
             ￥{{ scope.row.baseSalary }}
           </template>
         </el-table-column>
-        <el-table-column prop="jobSalary" label="员工岗位工资" width="120">
+        <el-table-column prop="jobSalary" label="员工岗位工资" width="150">
           <template slot-scope="scope">
             ￥{{ scope.row.jobSalary }}
           </template>
         </el-table-column>
-        <el-table-column prop="expSalary" label="员工工龄工资" width="200">
+        <el-table-column prop="expSalary" label="员工工龄工资" width="150">
           <template slot-scope="scope">
             ￥{{ scope.row.expSalary }}
           </template>
         </el-table-column>
-        <el-table-column prop="companyBenefits" label="公司福利" width="120">
+        <el-table-column prop="companyBenefits" label="公司福利" width="150">
           <template slot-scope="scope">
             ￥{{ scope.row.companyBenefits }}
           </template>
@@ -56,6 +61,7 @@
           <el-form-item label="员工编号" prop="empId">
             <span> {{ choiseRow.empId }} </span>
           </el-form-item>
+
           <el-form-item label="员工姓名" prop="empName">
             <el-input v-model="choiseRow.empName"></el-input>
           </el-form-item>
@@ -83,30 +89,33 @@
 
       <el-dialog title="新增员工薪资信息" :visible.sync="showAddSalaryInfoDialogTableVisible">
         <el-form style="font-size: 16px" :model="newData" ref="newData" label-width="100px" class="class-newData">
-          <el-form-item label="员工编号" prop="empId">
-            <el-input v-model="newData.empId"></el-input>
+
+          <el-form-item label="员工姓名">
+            <el-input v-model="newData.empName" style="width: 550px;"></el-input>
           </el-form-item>
-          <el-form-item label="员工姓名" prop="empName">
-            <el-input v-model="newData.empName"></el-input>
+          <el-form-item label="员工基础工资">
+            <span style="margin-left: 10px; font-size: 15px;"> ￥5000 </span>
           </el-form-item>
-          <el-form-item label="员工基础工资" prop="baseSalary">
-            <el-input v-model="newData.baseSalary"></el-input>
+
+          <el-form-item label="员工岗位工资">
+            <el-select v-model="value" placeholder="请选择">
+              <el-option v-for="item in optionsLevel" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
           </el-form-item>
-          <el-form-item label="员工岗位工资" prop="jobSalary">
-            <el-input v-model="newData.jobSalary"></el-input>
+          <el-form-item label="员工工龄工资">
+            <el-select v-model="ValueE" placeholder="请选择">
+              <el-option v-for="item in optionsExp" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
           </el-form-item>
-          <el-form-item label="员工工龄工资" prop="expSalary">
-            <el-input v-model="newData.expSalary"></el-input>
+          <el-form-item label="公司福利">
+            <el-select v-model="ValueB" placeholder="请选择">
+              <el-option v-for="item in optionsBef" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
           </el-form-item>
-          <el-form-item label="公司福利" prop="companyBenefits">
-            <el-input v-model="newData.companyBenefits"></el-input>
-          </el-form-item>
-          <el-form-item label="员工实得工资" prop="netSalary">
-            <el-input v-model="newData.netSalary"></el-input>
-          </el-form-item>
+
           <el-form-item style="display: flex; justify-content: center;">
             <el-button type="primary" @click="confirmAdd">添加</el-button>
-            <el-button @click="cancelAdd">取消</el-button>
+            <el-button @click="showAddSalaryInfoDialogTableVisible = false">取消</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -127,6 +136,111 @@ export default {
   name: "salaryInfo",
   data () {
     return {
+      param: "", // 搜索
+      value: '',
+      optionsLevel: [
+        {
+          value: 75000,
+          label: '资深专家,总监'
+        },
+        {
+          value: 60000,
+          label: '高级专家,资深经理'
+        },
+        {
+          value: 45000,
+          label: '专家,经理'
+        },
+        {
+          value: 35000,
+          label: '高级工程师,主管'
+        },
+        {
+          value: 25000,
+          label: '中级工程师'
+        },
+        {
+          value: 15000,
+          label: '初级工程师'
+        },
+        {
+          value: 8000,
+          label: '实习生'
+        },
+        {
+          value: 4000,
+          label: '其他'
+        }
+      ],
+      ValueE: null,
+      optionsExp: [
+        {
+          value: 1000,
+          label: '0年'
+        },
+        {
+          value: 5000,
+          label: '1年'
+        },
+        {
+          value: 7000,
+          label: '2年'
+        },
+        {
+          value: 10000,
+          label: '3年'
+
+        },
+        {
+          value: 70000,
+          label: '4年'
+        },
+        {
+          value: 13000,
+          label: '5年'
+
+        },
+        {
+          value: 15000,
+          label: '6年'
+        },
+        {
+          value: 20000,
+          label: '7年'
+
+        },
+        {
+          value: 25000,
+          label: '8年'
+        },
+        {
+          value: 30000,
+          label: '9年'
+        },
+        {
+          value: 40000,
+          label: '10年'
+        },
+        {
+          value: 50000,
+          label: '11年'
+        },
+        {
+          value: 60000,
+          label: '12年'
+        }
+      ],
+      ValueB: null,
+      optionsBef: [
+        {
+          value: 500,
+          label: '高温补贴'
+        },
+        {
+          value: 500,
+          label: '全勤奖'
+        }
+      ],
       showSalaryInfoDialogTableVisible: false, // 控制弹窗按钮
       showAddSalaryInfoDialogTableVisible: false, //新增弹窗
       page: {
@@ -141,6 +255,7 @@ export default {
     };
   },
 
+
   methods: {
 
     tableRowClassName: function (row) {
@@ -151,6 +266,31 @@ export default {
         return 'success-row';
       }
       return '';
+    },
+
+    // 搜索
+    Search () {
+      const _this = this;
+      let param = _this.param;
+      if (param) {  // 只有当param不为空时才发起请求
+        const url = `http://localhost:9000/salaryInfo/selectSalaryInfo/${param}`;
+        axios.get(url)
+          .then(response => {
+            const jsonModel = response.data;
+            if (jsonModel.data.total === null) {
+              this.$message.error('搜索失败，没有这条数据');
+            } else {
+              _this.salaryInfoList = jsonModel.data.records;
+              this.$message.success('搜索成功');
+            }
+          })
+          .catch(error => {
+            console.error('Error delete : ', error);
+            this.$message.error('搜索失败，没有这条数据');
+          });
+      } else {
+        this.$message.error('请输入员工姓名');
+      }
     },
 
     /**
@@ -194,20 +334,24 @@ export default {
     confirmAdd () {
       const _this = this;
       const url = 'http://localhost:9000/salaryInfo/insertSalaryInfo';
-      const data = {
-        empId: this.newData.empId,
+      let data = {
+
         empName: this.newData.empName,
-        baseSalary: this.newData.baseSalary,
-        jobSalary: this.newData.jobSalary,
-        expSalary: this.newData.expSalary,
-        companyBenefits: this.newData.companyBenefits,
-        netSalary: this.newData.netSalary
+        baseSalary: 5000,
+        jobSalary: this.value,
+        expSalary: this.ValueE,
+        companyBenefits: this.ValueB,
+        netSalary: 0
       };
+      data.netSalary = parseInt(data.baseSalary) + parseInt(data.jobSalary) + parseInt(data.expSalary) + parseInt(data.companyBenefits)
+      //alert(data.netSalary);
       axios.post(url, data)
         .then(response => {
           console.log(response.data);
-          alert("添加成功");
+          //alert("添加成功");
+          this.$message.success("添加成功！")
           this.showAddSalaryInfoDialogTableVisible = false;
+          _this.getSalaryInfo(); //刷新 重新加载数据
         })
         .catch(error => {
           console.error('Error sending data to the backend: ', error);
@@ -235,10 +379,9 @@ export default {
         });
 
     },
-    //刷新 重新加载数据
-    // loadData () {
-    //   getSalaryInfo();
-    // },
+
+
+
     /**
      * 原表单数据
      */
