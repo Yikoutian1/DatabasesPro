@@ -34,6 +34,14 @@ public class SalaryLevelController {
 
     private final SalaryLevelService salaryLevelService;
 
+    /**
+     * 获取所有的对照信息(工资等级和级别)
+     * @return
+     */
+    @GetMapping("/getAllInfoLe")
+    public Result getAllInfo(){
+        return salaryLevelService.getAllInfo();
+    }
 
     /**
      * 工资等级和级别对照表
