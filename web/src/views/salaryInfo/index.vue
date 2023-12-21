@@ -12,8 +12,7 @@
 
     <div class="table">
 
-      <el-table :data="salaryInfoList" border style="width: 100%" :expand-row-keys="expandRowKeys"
-        :row-class-name="tableRowClassName" @row-click="handleRowClick">
+      <el-table :data="salaryInfoList" border style="width: 100%" :row-class-name="tableRowClassName">
 
         <el-table-column prop="empId" label="员工编号" width="150">
           <!-- sortable="custom" :sort-method="sortChange"> -->
@@ -68,18 +67,37 @@
           <el-form-item label="员工基础工资" prop="baseSalary">
             <el-input v-model="choiseRow.baseSalary"></el-input>
           </el-form-item>
+
           <el-form-item label="员工岗位工资" prop="jobSalary">
+            <el-select v-model="choiseRow.jobSalary" placeholder="请选择">
+              <el-option v-for="item in optionsLevel" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
+          </el-form-item>
+          <el-form-item label="员工工龄工资" prop="expSalary">
+            <el-select v-model="choiseRow.expSalary" placeholder="请选择">
+              <el-option v-for="item in optionsExp" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
+          </el-form-item>
+          <el-form-item label="公司福利" prop="companyBenefits">
+            <el-select v-model="choiseRow.companyBenefits" placeholder="请选择">
+              <el-option v-for="item in optionsBef" :value="item.value" :key="item.value">{{ item.label }}</el-option>
+            </el-select> ￥
+          </el-form-item>
+
+
+          <!-- <el-form-item label="员工岗位工资" prop="jobSalary">
             <el-input v-model="choiseRow.jobSalary"></el-input>
           </el-form-item>
+
           <el-form-item label="员工工龄工资" prop="expSalary">
             <el-input v-model="choiseRow.expSalary"></el-input>
           </el-form-item>
           <el-form-item label="公司福利" prop="companyBenefits">
             <el-input v-model="choiseRow.companyBenefits"></el-input>
-          </el-form-item>
-          <el-form-item label="员工实得工资" prop="netSalary">
+          </el-form-item> -->
+          <!-- <el-form-item label="员工实得工资" prop="netSalary">
             <el-input v-model="choiseRow.netSalary"></el-input>
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item style="display: flex; justify-content: center;">
             <el-button type="primary" @click="confirmUpdate()">保存</el-button>
             <el-button @click="concelUpdate()">取消</el-button>
@@ -129,6 +147,9 @@
 
 <script>
 import { getSalaryInfo } from "@/api/salaryInfo";
+import { getSalaryExp } from "@/api/salaryExpLevel";
+import { getSalaryLevel } from "@/api/salaryExpLevel";
+import { getAllBenefitInfo } from "@/api/benefit";
 import axios from 'axios';
 
 
@@ -173,74 +194,9 @@ export default {
         }
       ],
       ValueE: null,
-      optionsExp: [
-        {
-          value: 1000,
-          label: '0年'
-        },
-        {
-          value: 5000,
-          label: '1年'
-        },
-        {
-          value: 7000,
-          label: '2年'
-        },
-        {
-          value: 10000,
-          label: '3年'
-
-        },
-        {
-          value: 70000,
-          label: '4年'
-        },
-        {
-          value: 13000,
-          label: '5年'
-
-        },
-        {
-          value: 15000,
-          label: '6年'
-        },
-        {
-          value: 20000,
-          label: '7年'
-
-        },
-        {
-          value: 25000,
-          label: '8年'
-        },
-        {
-          value: 30000,
-          label: '9年'
-        },
-        {
-          value: 40000,
-          label: '10年'
-        },
-        {
-          value: 50000,
-          label: '11年'
-        },
-        {
-          value: 60000,
-          label: '12年'
-        }
-      ],
+      optionsExp: [],
       ValueB: null,
-      optionsBef: [
-        {
-          value: 500,
-          label: '高温补贴'
-        },
-        {
-          value: 500,
-          label: '全勤奖'
-        }
-      ],
+      optionsBef: [],
       showSalaryInfoDialogTableVisible: false, // 控制弹窗按钮
       showAddSalaryInfoDialogTableVisible: false, //新增弹窗
       page: {
@@ -301,6 +257,7 @@ export default {
       const _this = this;
       const url = 'http://localhost:9000/salaryInfo/updateSalaryInfo';
       const data = _this.choiseRow;
+      data.netSalary = parseInt(data.baseSalary) + parseInt(data.jobSalary) + parseInt(data.expSalary) + parseInt(data.companyBenefits)
 
       axios.post(url, data)
         .then(response => {
@@ -425,6 +382,20 @@ export default {
       _this.oldChoiseRow.netSalary = row.netSalary;
 
     },
+
+    extractSalaryRange (salaryString) {
+      const regex = /(\d+)-(\d+)k|\￥(\d+)-(\d+)/i;
+      const match = salaryString.match(regex);
+      if (match) {
+        if (match[1] && match[2]) {
+          return { min: parseInt(match[1]), max: parseInt(match[2]) };
+        } else if (match[3] && match[4]) {
+          return { min: parseInt(match[3]), max: parseInt(match[4]) };
+        }
+      }
+      return null;
+    },
+
     /**
      * 初始化选项
      */
@@ -439,6 +410,59 @@ export default {
     getSalaryInfo () {
       const _this = this;
 
+      getSalaryExp().then((res) => {
+        const jsonModel = res.data;
+        console.log(jsonModel)
+        if (res.code === 200) {
+          for (let i = 0; i < jsonModel.length; i++) {
+            const item = jsonModel[i]
+            _this.optionsExp.push({
+              value: item.salAmount,
+              label: item.exp
+            });
+          }
+          console.log(_this.optionsExp)
+        } else {
+          _this.$message.error("服务器打瞌睡了");
+        }
+      });
+
+      getAllBenefitInfo().then((res) => {
+        const jsonModel = res.data;
+        if (res.code === 200) {
+          // _this.optionsBef = jsonModel;
+          for (let i = 0; i < jsonModel.length; i++) {
+            const item = jsonModel[i]
+            _this.optionsBef.push({
+              value: item.value,
+              label: item.name
+            });
+          }
+        } else {
+          _this.$message.error("服务器打瞌睡了");
+        }
+      });
+
+      // getSalaryLevel().then((res) => {
+      //   const jsonModel = res.data;
+      //   if (res.code === 200) {
+      //     _this.optionsLevel = jsonModel;
+      //     //       for (let i = 0; i < jsonModel.length; i++) {
+      //     //         const item = jsonModel[i]
+      //     //         const salaryString
+      //     //         const salaryRange
+      //     //           _this.optionsExp.push({
+      //     //             salaryString: '￥62-86k',
+      //     //             salaryRange: extractSalaryRange(salaryString),
+      //     //             value: item.salAmount,
+      //     //             label: item.exp
+      //     //           });
+      //     // }
+      //   } else {
+      //     _this.$message.error("服务器打瞌睡了");
+      //   }
+      // });
+
       getSalaryInfo().then((res) => {
         const jsonModel = res.data;
         if (res.code === 200) {
@@ -449,6 +473,7 @@ export default {
           this.$message.error("服务器打瞌睡了");
         }
       });
+
     },
 
 
