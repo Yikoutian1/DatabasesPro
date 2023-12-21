@@ -304,15 +304,20 @@ export default {
       //alert(data.netSalary);
       axios.post(url, data)
         .then(response => {
-          console.log(response.data);
-          //alert("添加成功");
-          this.$message.success("添加成功！")
-          this.showAddSalaryInfoDialogTableVisible = false;
-          _this.getSalaryInfo(); //刷新 重新加载数据
+          if (response.code === 200) {
+            console.log(response.data);
+            //alert("添加成功");
+            this.$message.success("添加成功")
+            _this.getSalaryInfo(); //刷新 重新加载数据
+          } else {
+            this.$message.error("添加时发送了未知的错误")
+          }
         })
         .catch(error => {
           console.error('Error sending data to the backend: ', error);
         });
+      this.showAddSalaryInfoDialogTableVisible = false;
+
     },
     /**
      * 
