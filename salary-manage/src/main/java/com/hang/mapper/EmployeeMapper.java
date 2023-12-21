@@ -24,5 +24,6 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
                                    @Param("iname")String name);
 
 
+    void deleteSI(@Param("name") String name);
 }
 

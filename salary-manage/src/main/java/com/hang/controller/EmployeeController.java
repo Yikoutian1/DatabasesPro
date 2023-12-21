@@ -4,8 +4,11 @@ package com.hang.controller;
 import com.hang.domain.dto.EmployeeDto;
 import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
+import com.hang.mapper.EmployeeMapper;
+import com.hang.mapper.SalaryInfoMapper;
 import com.hang.result.Result;
 import com.hang.service.EmployeeService;
+import com.hang.service.SalaryInfoService;
 import com.hang.service.SalaryLevelService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,15 +87,19 @@ public class EmployeeController {
         employeeService.updateById(employee);
         return Result.success();
     }
-
+    @Autowired
+    private EmployeeMapper employeeMapper;
     /**
      * 根据id删除用户
      *
      * @param id 用户id
      * @return success 200
      */
-    @DeleteMapping("/{id}")
-    public Result delEmployee(@PathVariable("id") Integer id) {
+    @GetMapping("/del")
+    @Transactional(rollbackFor = Exception.class)
+    public Result delEmployee(@RequestParam("id") Integer id) {
+        Employee employee = employeeService.getById(id);
+        employeeMapper.deleteSI(employee.getName());
         employeeService.removeById(id);
         return Result.success();
     }

@@ -268,6 +268,7 @@ export default {
               message: "删除成功",
               type: "success",
             });
+            this.getEmployeePageInfo();
           } else {
             this.$message.error("删除失败");
           }

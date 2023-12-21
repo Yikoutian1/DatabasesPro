@@ -51,9 +51,9 @@ export function updateEmployeeInfo(data) {
 
 export function delEmployee(id) {
   return request({
-    url: "/employee",
-    method: "delete",
-    params: { id: id },
+    url: "/employee/del",
+    method: "get",
+    params: {id: id}
   });
 }
 
