@@ -3,9 +3,12 @@ package com.hang.controller;
 
 
 import com.hang.domain.dto.PageInfoDto;
+import com.hang.domain.po.Employee;
 import com.hang.domain.po.SalaryInfo;
 import com.hang.domain.vo.SalaryInfoVo;
+import com.hang.mapper.EmployeeMapper;
 import com.hang.result.Result;
+import com.hang.service.EmployeeService;
 import com.hang.service.SalaryInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +47,8 @@ public class SalaryInfoController {
         salaryInfoService.updateSalaryInfo(salaryInfo);
         return Result.success();
     }
-
+    @Autowired
+    private EmployeeMapper employeeMapper;
     /**
      * 新增员工薪资信息
      * @param salaryInfo
@@ -52,6 +56,12 @@ public class SalaryInfoController {
      */
     @RequestMapping(value = "/insertSalaryInfo", method = {RequestMethod.POST, RequestMethod.GET})
     public Result insertSalaryInfo(@RequestBody SalaryInfo salaryInfo) {
+        Integer empId = employeeMapper.getEmpId(salaryInfo.getEmpName());
+        // 如果没有这个人
+        if(null == empId){
+            return Result.fail();
+        }
+        salaryInfo.setEmpId(empId);
         salaryInfoService.insertSalaryInfo(salaryInfo);
         return Result.success();
     }

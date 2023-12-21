@@ -20,6 +20,11 @@
         ORDER BY ${vo.sortBy} ${vo.orderBy}
         LIMIT #{page},#{vo.pageSize}
     </select>
+    <select id="getEmpId" resultType="java.lang.Integer">
+        select id
+        from employee
+        where name = #{name}
+    </select>
 
     <update id="saveEmployeeInfo">
         UPDATE employee

@@ -6,6 +6,7 @@ import com.hang.domain.po.Employee;
 import com.hang.domain.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -25,5 +26,7 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
 
 
     void deleteSI(@Param("name") String name);
+
+    Integer getEmpId(@Param("name") String empName);
 }
 

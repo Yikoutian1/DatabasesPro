@@ -4,6 +4,7 @@ package com.hang.controller;
 import com.hang.domain.dto.EmployeeDto;
 import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
+import com.hang.domain.po.SalaryInfo;
 import com.hang.mapper.EmployeeMapper;
 import com.hang.mapper.SalaryInfoMapper;
 import com.hang.result.Result;
@@ -62,6 +63,8 @@ public class EmployeeController {
      * @param employeeDto Form
      * @return 200
      */
+    @Autowired
+    private SalaryInfoService salaryInfoService;
     @PostMapping("/saveEmployeeInfo")
     public Result saveEmployeeInfo(@RequestBody EmployeeDto employeeDto) {
         Employee employee = new Employee();
@@ -71,6 +74,16 @@ public class EmployeeController {
         String data = (String) salaryLevelService.getSalaryContract(salaryJb).getData();
         employee.setSalaryDj(data);
         employeeService.save(employee);
+
+        SalaryInfo salaryInfo = new SalaryInfo();
+        salaryInfo.setEmpId(employee.getId());
+        salaryInfo.setEmpName(employee.getName());
+        salaryInfo.setBaseSalary(0d);
+        salaryInfo.setExpSalary(0d);
+        salaryInfo.setJobSalary(0d);
+        salaryInfo.setNetSalary(0d);
+        salaryInfo.setCompanyBenefits(0d);
+        salaryInfoService.insertSalaryInfo(salaryInfo);
         return Result.success();
     }
 

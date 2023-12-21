@@ -1,5 +1,12 @@
 <template>
   <div class="main">
+
+    <div class="head">
+      <el-button type="success" @click="addNewSalaryLevelDialog()">添加新的工资级别信息</el-button>
+
+      <el-button type="success" @click="addNewSalaryExplDialog()">添加新的工龄工资信息</el-button>
+    </div>
+
     <div class="table" style="float: left; margin-left: 60px">
       <div style="text-align: center; font-size: 24px; border: 1px solid gainsboro; line-height: 50px;">工资级别表</div>
       <el-table :data="expInfoList" border style="width: 100%">
@@ -73,6 +80,49 @@
       </el-form>
     </el-dialog>
 
+
+    <!-- 新增 -->
+
+    <el-dialog title="员工的薪资级别信息新增" :visible.sync="dialogNewSalary">
+      <el-form style="font-size: 16px" :model="newSalaryForm" ref="newSalaryForm" label-width="100px"
+        class="class-newSalaryForm">
+        <el-form-item label="工资级别" prop="salGrade">
+          <el-input v-model="newSalaryForm.salGrade"></el-input>
+        </el-form-item>
+
+        <el-form-item label="岗位名" prop="salJobName">
+          <el-input v-model="newSalaryForm.salJobName"></el-input>
+        </el-form-item>
+        <el-form-item label="工资金额" prop="salAmount">
+          <el-input v-model="newSalaryForm.salAmount"></el-input>
+        </el-form-item>
+
+        <el-form-item style="display: flex; justify-content: center;">
+          <el-button type="primary" @click="confirmNewSalary()">保存</el-button>
+          <el-button @click="dialogNewSalary = false">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+
+    <el-dialog title="员工的经验信息新增" :visible.sync="dialogNewExperience">
+      <el-form style="font-size: 16px" :model="newExperienceForm" ref="newExperienceForm" label-width="100px"
+        class="class-newExperienceForm">
+        <el-form-item label="工作经验" prop="experience">
+          <el-input v-model="newExperienceForm.experience"></el-input>
+        </el-form-item>
+
+        <el-form-item label="工资金额" prop="salAmount">
+          <el-input v-model="newExperienceForm.salAmount"></el-input>
+        </el-form-item>
+
+        <el-form-item style="display: flex; justify-content: center;">
+          <el-button type="primary" @click="confirmNewExperience()">保存</el-button>
+          <el-button @click="dialogNewExperience = false">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+
+
   </div>
 </template>
 
@@ -93,9 +143,68 @@ export default {
       dialogLevel: false,
       dialogExp: false,
       choiseRow: [], // 选择的行信息
+      dialogNewSalary: false,
+      dialogNewExperience: false,
+      newSalaryForm: {
+        salGrade: '',
+        salJobName: '',
+        salAmount: ''
+      },
+      newExperienceForm: {
+        experience: '',
+        salAmount: ''
+      }
     }
   },
   methods: {
+
+    addNewSalaryLevelDialog () {
+      const _this = this;
+      _this.dialogNewSalary = true;
+
+    },
+
+    addNewSalaryExplDialog () {
+      const _this = this;
+      _this.dialogNewExperience = true;
+    },
+
+    confirmNewSalary () {
+      const _this = this;
+      let data = _this.newSalaryForm
+      let url = 'http://localhost:9000/salaryLevel/insertSalaryLevel';
+      axios.post(url, data)
+        .then((res) => {
+          console.log(res.data);
+          _this.$message.success("新增成功！")
+          _this.dialogLevel = false;
+          _this.getInfo();
+        })
+        .catch(error => {
+          _this.$message.error("新增失败")
+        });
+      _this.dialogNewSalary = false;
+    },
+
+    confirmNewExperience () {
+      const _this = this;
+      let data = _this.newExperienceForm
+      let url = 'http://localhost:9000/experience/insertSalaryExp';
+      axios.post(url, data)
+        .then((res) => {
+          console.log(res.data);
+          _this.$message.success("新增成功！")
+          _this.dialogNewExperience = false;
+          _this.getInfo();
+        })
+        .catch(error => {
+          _this.$message.error("新增失败")
+        });
+      _this.dialogNewExperience = false;
+    },
+
+
+
     editSalaryAndLevel (row) {
       const _this = this;
       console.log(row);
@@ -108,11 +217,13 @@ export default {
       _this.choiseRow = row;
       _this.dialogExp = true;
     },
+    //编辑
     confirmUpdate () {
       const _this = this;
 
       console.log(_this.choiseRow.ss)
 
+      //判断是哪个表
       if (_this.choiseRow.salGrade != undefined) {
         let data = {
           salGrade: _this.choiseRow.salGrade,
