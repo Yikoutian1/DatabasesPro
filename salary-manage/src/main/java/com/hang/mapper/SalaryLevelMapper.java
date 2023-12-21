@@ -22,5 +22,7 @@ public interface SalaryLevelMapper extends BaseMapper<SalaryLevel> {
     List<String> getSalaryOnlyLevel();
 
     void updateSalaryLevel(SalaryLevel salaryLevel);
+
+    void insertSalaryLevel(SalaryLevel salaryLevel);
 }
 

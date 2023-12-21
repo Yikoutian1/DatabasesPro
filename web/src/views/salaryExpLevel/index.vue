@@ -43,7 +43,7 @@
         </el-form-item>
 
         <el-form-item label="岗位名" prop="salJobName">
-          <span> {{ choiseRow.salJobName }} </span>
+          <el-input v-model="choiseRow.salJobName"></el-input>
         </el-form-item>
         <el-form-item label="工资金额" prop="salAmount">
           <el-input v-model="choiseRow.salAmount"></el-input>

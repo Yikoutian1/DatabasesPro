@@ -31,5 +31,10 @@ public class ExperienceServiceImpl extends ServiceImpl<ExperienceMapper, Experie
     public void updateSalary(Experience experience) {
         experienceMapper.updateSalary(experience);
     }
+
+    @Override
+    public void insertSalaryExp(Experience experience) {
+        experienceMapper.insertSalaryExp(experience);
+    }
 }
 

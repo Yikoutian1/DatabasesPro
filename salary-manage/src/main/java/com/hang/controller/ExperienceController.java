@@ -37,5 +37,11 @@ public class ExperienceController{
         experienceService.updateSalary(experience);
         return Result.success();
     }
+
+    @RequestMapping(value = "/insertSalaryExp", method = {RequestMethod.POST, RequestMethod.GET})
+    public Result insertSalaryExp(@RequestBody Experience experience) {
+        experienceService.insertSalaryExp(experience);
+        return Result.success();
+    }
 }
 

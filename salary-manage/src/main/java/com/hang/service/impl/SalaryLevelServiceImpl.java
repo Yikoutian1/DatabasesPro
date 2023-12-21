@@ -70,4 +70,9 @@ public class SalaryLevelServiceImpl extends ServiceImpl<SalaryLevelMapper, Salar
     public void updateSalary(SalaryLevel salaryLevel) {
         salaryLevelMapper.updateSalaryLevel(salaryLevel);
     }
+
+    @Override
+    public void insertSalaryExp(SalaryLevel salaryLevel) {
+        salaryLevelMapper.insertSalaryLevel(salaryLevel);
+    }
 }
