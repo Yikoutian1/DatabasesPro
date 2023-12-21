@@ -1,11 +1,13 @@
 package com.hang.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hang.domain.dto.PageInfoDto;
 import com.hang.domain.po.Employee;
+import com.hang.domain.po.SalaryLevel;
 import com.hang.domain.vo.EmployeeVo;
 import com.hang.mapper.EmployeeMapper;
 import com.hang.result.Result;
