@@ -2,9 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hang.mapper.SalaryLevelMapper">
+    <insert id="insertSalaryLevel">
+        INSERT INTO salary_level (sal_amount,sal_grade,sal_job_name)
+        VALUES ( #{salAmount},  #{salGrade},  #{salJobName})
+    </insert>
     <update id="updateSalaryLevel">
         UPDATE salary_level
         SET sal_amount  = #{salAmount}
+        , sal_job_name = #{salJobName}
         where sal_grade = #{salGrade}
     </update>
 

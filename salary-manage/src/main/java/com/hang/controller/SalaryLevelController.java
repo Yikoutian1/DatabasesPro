@@ -1,6 +1,7 @@
 package com.hang.controller;
 
 
+import com.hang.domain.po.Experience;
 import com.hang.domain.po.SalaryInfo;
 import com.hang.domain.po.SalaryLevel;
 import com.hang.domain.vo.SalarySelectVo;
@@ -76,6 +77,12 @@ public class SalaryLevelController {
     @RequestMapping(value = "/updateSalaryInfo", method = {RequestMethod.POST, RequestMethod.GET})
     public Result updateSalary(@RequestBody SalaryLevel salaryLevel) {
         salaryLevelService.updateSalary(salaryLevel);
+        return Result.success();
+    }
+
+    @RequestMapping(value = "/insertSalaryLevel", method = {RequestMethod.POST, RequestMethod.GET})
+    public Result insertSalaryExp(@RequestBody SalaryLevel salaryLevel) {
+        salaryLevelService.insertSalaryExp(salaryLevel);
         return Result.success();
     }
 

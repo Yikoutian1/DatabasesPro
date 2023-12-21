@@ -15,5 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ExperienceMapper extends BaseMapper<Experience> {
 
     void updateSalary(Experience experience);
+
+    void insertSalaryExp(Experience experience);
 }
 

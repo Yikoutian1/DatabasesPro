@@ -16,5 +16,7 @@ public interface ExperienceService extends IService<Experience> {
     Result getAllInfo();
 
     void updateSalary(Experience experience);
+
+    void insertSalaryExp(Experience experience);
 }
 
