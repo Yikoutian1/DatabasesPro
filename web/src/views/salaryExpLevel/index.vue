@@ -329,5 +329,6 @@ export default {
 
 .head {
   margin: 10px auto;
+  margin-left: 60px;
 }
 </style>
